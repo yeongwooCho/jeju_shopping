@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jeju_shopping/common/view/splash_screen.dart';
+import 'package:jeju_shopping/common/provider/go_router.dart';
 
 void main() {
   runApp(const _App());
@@ -11,12 +11,12 @@ class _App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Pretendard',
       ),
-      home: SplashScreen(),
+      routerConfig: router,
     );
   }
 }
