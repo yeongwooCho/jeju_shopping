@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/user/view/login_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   static String get routeName => 'splash';
 
   const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    delay();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,5 +41,11 @@ class SplashScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void delay() async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    context.goNamed(LoginScreen.routeName);
   }
 }
