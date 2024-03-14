@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,7 +9,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
-      backgroundColor: MyColor.primary,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -18,10 +16,13 @@ class SplashScreen extends StatelessWidget {
           children: [
             Image.asset(
               'asset/img/logo/logo.png',
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width * 2 / 3,
             ),
             const SizedBox(height: 16.0),
-            const CircularProgressIndicator(color: Colors.white)
+            Image.asset(
+              'asset/img/logo/name.png',
+              width: MediaQuery.of(context).size.width * 2 / 3,
+            ),
           ],
         ),
       ),
