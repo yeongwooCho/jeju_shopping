@@ -4,15 +4,8 @@ class MyTextStyle {
   static const letterSpacing = -1.025;
   static const height = 1.2;
 
-  static const appName = TextStyle(
-    fontSize: 36.0,
-    fontWeight: FontWeight.w600,
-    letterSpacing: letterSpacing,
-    height: height,
-  );
-
   static const headTitle = TextStyle(
-    fontSize: 24.0,
+    fontSize: 32.0,
     fontWeight: FontWeight.w600,
     letterSpacing: letterSpacing,
     height: height,
@@ -62,6 +55,13 @@ class MyTextStyle {
 
   static const descriptionRegular = TextStyle(
     fontSize: 16.0,
+    fontWeight: FontWeight.w400,
+    letterSpacing: letterSpacing,
+    height: height,
+  );
+
+  static const minimumRegular = TextStyle(
+    fontSize: 12.0,
     fontWeight: FontWeight.w400,
     letterSpacing: letterSpacing,
     height: height,

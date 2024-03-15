@@ -7,6 +7,8 @@ class MyButtonStyle {
   static ButtonStyle primary = ElevatedButton.styleFrom(
     foregroundColor: MyColor.white,
     backgroundColor: MyColor.primary,
+    disabledForegroundColor: MyColor.darkGrey,
+    disabledBackgroundColor: MyColor.lightGrey,
     elevation: 0,
     padding: const EdgeInsets.symmetric(vertical: 12.0),
     minimumSize: const Size(60, 48),
@@ -21,6 +23,8 @@ class MyButtonStyle {
   static ButtonStyle secondary = ElevatedButton.styleFrom(
     foregroundColor: MyColor.primary,
     backgroundColor: MyColor.white,
+    disabledForegroundColor: MyColor.darkGrey,
+    disabledBackgroundColor: MyColor.lightGrey,
     elevation: 0,
     padding: const EdgeInsets.symmetric(vertical: 12.0),
     minimumSize: const Size(60, 48),
