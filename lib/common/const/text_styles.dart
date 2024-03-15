@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyTextStyle {
   static const letterSpacing = -1.025;
-  static const height = 1.0;
+  static const height = 1.2;
 
   static const appName = TextStyle(
     fontSize: 36.0,

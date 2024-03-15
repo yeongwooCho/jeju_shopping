@@ -21,7 +21,6 @@ class CustomTextFormField extends StatelessWidget {
   final bool enabled;
   final VoidCallback? onEditingComplete;
   final FocusNode? focusNode;
-  final double contentPaddingVertical;
 
   const CustomTextFormField({
     Key? key,
@@ -41,7 +40,6 @@ class CustomTextFormField extends StatelessWidget {
     this.enabled = true,
     this.onEditingComplete,
     this.focusNode,
-    this.contentPaddingVertical = 8.0,
   }) : super(key: key);
 
   @override
@@ -55,6 +53,10 @@ class CustomTextFormField extends StatelessWidget {
       focusNode: focusNode,
       obscureText: obscureText,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16.0,
+          vertical: 16.0,
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: const BorderSide(
@@ -79,6 +81,8 @@ class CustomTextFormField extends StatelessWidget {
                 : hintStyle,
         suffixIcon: suffixIcon,
       ),
+      cursorColor: MyColor.primary,
+      cursorHeight: 24.0,
       style: MyTextStyle.descriptionRegular,
       maxLength: maxLength,
       maxLines: maxLines,
