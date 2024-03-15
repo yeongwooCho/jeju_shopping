@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/provider/go_router.dart';
 
 void main() {
-  runApp(const _App());
+  runApp(
+    ProviderScope(
+      observers: [],
+      child: _App(),
+    ),
+  );
 }
 
 class _App extends ConsumerWidget {
