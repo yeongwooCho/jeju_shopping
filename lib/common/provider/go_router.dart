@@ -4,7 +4,7 @@ import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
-import 'package:jeju_shopping/user/view/email_screen.dart';
+import 'package:jeju_shopping/user/view/email_login_screen.dart';
 import 'package:jeju_shopping/user/view/login_screen.dart';
 import 'package:jeju_shopping/user/view/my_page_screen.dart';
 

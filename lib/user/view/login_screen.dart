@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
-import 'package:jeju_shopping/user/view/email_screen.dart';
+import 'package:jeju_shopping/user/view/email_login_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static String get routeName => "login";
@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
               'asset/img/logo/name.png',
               width: MediaQuery.of(context).size.width * 2 / 3,
             ),
-            const SizedBox(height: 120),
+            const SizedBox(height: 114.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     foregroundColor: MyColor.text,
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: const Color(0xFFFAE64D),
                     elevation: 0,
                     minimumSize: const Size(100, 56),
                     shape: RoundedRectangleBorder(
