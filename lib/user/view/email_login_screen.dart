@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/user/view/term_screen.dart';
 import 'package:jeju_shopping/common/component/custom_text_form_field.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
@@ -30,7 +32,6 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 120.0),
-
               Image.asset(
                 'asset/img/logo/name.png',
                 width: MediaQuery.of(context).size.width * 2 / 3,
@@ -119,11 +120,22 @@ class _BottomButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        renderButton(title: '  회원가입  ', onPressed: () {}),
+        renderButton(
+          title: '  회원가입  ',
+          onPressed: () {
+            context.goNamed(TermScreen.routeName);
+          },
+        ),
         renderDivider(),
-        renderButton(title: ' 이메일 찾기', onPressed: () {}),
+        renderButton(
+          title: ' 이메일 찾기',
+          onPressed: () {},
+        ),
         renderDivider(),
-        renderButton(title: '비밀번호 찾기', onPressed: () {}),
+        renderButton(
+          title: '비밀번호 찾기',
+          onPressed: () {},
+        ),
       ],
     );
   }

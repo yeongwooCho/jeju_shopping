@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/user/view/term_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
@@ -33,7 +34,14 @@ List<RouteBase> get routes => [
             path: 'email_login',
             name: EmailLoginScreen.routeName,
             builder: (context, state) => EmailLoginScreen(),
-          )
+            routes: [
+              GoRoute(
+                path: 'term',
+                name: TermScreen.routeName,
+                builder: (context, state) => TermScreen(),
+              ),
+            ],
+          ),
         ],
       ),
       ShellRoute(
