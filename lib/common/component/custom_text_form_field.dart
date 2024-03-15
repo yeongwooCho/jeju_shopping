@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -12,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputAction textInputAction;
   final bool obscureText;
   final String? hintText;
+  final TextStyle? hintStyle;
   final Widget? suffixIcon;
   final int? maxLength;
   final int? maxLines;
@@ -31,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
     this.textInputAction = TextInputAction.done,
     this.obscureText = false,
     this.hintText,
+    this.hintStyle,
     this.suffixIcon,
     this.maxLength,
     this.maxLines = 1,
@@ -52,14 +55,28 @@ class CustomTextFormField extends StatelessWidget {
       focusNode: focusNode,
       obscureText: obscureText,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(
-          vertical: contentPaddingVertical,
-          horizontal: 12.0,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: const BorderSide(
+            width: 2.0,
+            color: MyColor.primary,
+          ),
         ),
-        border: OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            width: 1.0,
+            color: MyColor.middleGrey,
+          ),
           borderRadius: BorderRadius.circular(8.0),
         ),
         hintText: hintText,
+        hintStyle: (hintText == null)
+            ? null
+            : (hintStyle == null)
+                ? MyTextStyle.bodyRegular.copyWith(
+                    color: MyColor.darkGrey,
+                  )
+                : hintStyle,
         suffixIcon: suffixIcon,
       ),
       style: MyTextStyle.descriptionRegular,
