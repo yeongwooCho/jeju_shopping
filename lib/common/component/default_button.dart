@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeju_shopping/common/const/button_style.dart';
 
 class PrimaryButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Widget child;
 
   const PrimaryButton({
@@ -22,7 +22,7 @@ class PrimaryButton extends StatelessWidget {
 }
 
 class SecondaryButton extends StatelessWidget {
-  final Function() onPressed;
+  final VoidCallback? onPressed;
   final Widget child;
 
   const SecondaryButton({
