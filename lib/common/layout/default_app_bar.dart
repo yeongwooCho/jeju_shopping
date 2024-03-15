@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
+import 'package:jeju_shopping/common/const/text_styles.dart';
 
 class DefaultAppBar extends StatefulWidget implements PreferredSizeWidget {
   static const defaultAppBarHeight = 60.0;
@@ -30,16 +31,12 @@ class _DefaultAppBarState extends State<DefaultAppBar> {
     return AppBar(
       title: Text(
         widget.title,
-        style: const TextStyle(
-          fontSize: 18.0,
-          fontWeight: FontWeight.w600,
-          color: MyColor.text,
-        ),
+        style: MyTextStyle.bodyBold,
       ),
       leading: widget.leading,
       centerTitle: true,
       actions: widget.action,
-      elevation: widget.elevation ?? 0.3,
+      elevation: widget.elevation ?? 0.0,
       backgroundColor: MyColor.white,
       foregroundColor: MyColor.text,
     );
