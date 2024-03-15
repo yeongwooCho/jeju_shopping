@@ -8,7 +8,8 @@ class MyButtonStyle {
     foregroundColor: MyColor.white,
     backgroundColor: MyColor.primary,
     elevation: 0,
-    minimumSize: const Size(100, 50),
+    padding: const EdgeInsets.symmetric(vertical: 12.0),
+    minimumSize: const Size(60, 48),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
     ),
@@ -21,7 +22,8 @@ class MyButtonStyle {
     foregroundColor: MyColor.primary,
     backgroundColor: MyColor.white,
     elevation: 0,
-    minimumSize: const Size(100, 50),
+    padding: const EdgeInsets.symmetric(vertical: 12.0),
+    minimumSize: const Size(60, 48),
     shape: RoundedRectangleBorder(
       side: const BorderSide(
         width: 1.0,
@@ -29,8 +31,8 @@ class MyButtonStyle {
       ),
       borderRadius: BorderRadius.circular(8.0),
     ),
-    // textStyle: MyTextStyle.bodyBold.copyWith(
-    //   color: MyColor.primary,
-    // ),
+    textStyle: MyTextStyle.bodyBold.copyWith(
+      color: MyColor.primary,
+    ),
   );
 }
