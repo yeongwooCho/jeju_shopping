@@ -40,3 +40,23 @@ class SecondaryButton extends StatelessWidget {
     );
   }
 }
+
+class ContainerButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final Widget child;
+
+  const ContainerButton({
+    super.key,
+    required this.onPressed,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: MyButtonStyle.container,
+      child: child,
+    );
+  }
+}

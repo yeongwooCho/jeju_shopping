@@ -39,4 +39,21 @@ class MyButtonStyle {
       color: MyColor.primary,
     ),
   );
+
+  static ButtonStyle container = ElevatedButton.styleFrom(
+    foregroundColor: MyColor.darkGrey,
+    backgroundColor: MyColor.white,
+    elevation: 0,
+    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+    minimumSize: const Size(60, 48),
+    shape: RoundedRectangleBorder(
+      side: const BorderSide(
+        width: 1.0,
+        color: MyColor.middleGrey,
+      ),
+      borderRadius: BorderRadius.circular(8.0),
+    ),
+    textStyle: MyTextStyle.bodyRegular,
+    alignment: AlignmentDirectional.centerStart,
+  );
 }
