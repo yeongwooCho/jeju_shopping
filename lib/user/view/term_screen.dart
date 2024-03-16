@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/user/view/term_detail_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class TermScreen extends StatelessWidget {
@@ -102,6 +104,7 @@ class _TermContainerState extends State<TermContainer> {
             ),
             const SizedBox(height: 16.0),
             _CheckBox(
+              index: 0,
               title: '이용약관 동의',
               isRequired: true,
               onTap: onTapUse,
@@ -109,6 +112,7 @@ class _TermContainerState extends State<TermContainer> {
             ),
             const SizedBox(height: 8.0),
             _CheckBox(
+              index: 1,
               title: '개인정보 취급방침 동의',
               isRequired: true,
               onTap: onTapPersonalInfo,
@@ -116,6 +120,7 @@ class _TermContainerState extends State<TermContainer> {
             ),
             const SizedBox(height: 8.0),
             _CheckBox(
+              index: 2,
               title: '마케팅 정보 수신 동의',
               isRequired: false,
               onTap: onTapMarketing,
@@ -166,6 +171,7 @@ class _TermContainerState extends State<TermContainer> {
 }
 
 class _CheckBox extends StatelessWidget {
+  final int index;
   final String title;
   final bool isRequired;
   final VoidCallback onTap;
@@ -173,6 +179,7 @@ class _CheckBox extends StatelessWidget {
 
   const _CheckBox({
     super.key,
+    required this.index,
     required this.title,
     required this.isRequired,
     required this.onTap,
@@ -230,9 +237,17 @@ class _CheckBox extends StatelessWidget {
                   ),
                 ],
               ),
-              PhosphorIcon(
-                PhosphorIcons.caretRight(),
-                size: 24.0,
+              IconButton(
+                onPressed: () {
+                  context.pushNamed(
+                    TermDetailScreen.routeName,
+                    pathParameters: {'id': index.toString()},
+                  );
+                },
+                iconSize: 24.0,
+                icon: PhosphorIcon(
+                  PhosphorIcons.caretRight(),
+                ),
               ),
             ],
           ),

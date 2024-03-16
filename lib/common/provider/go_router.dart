@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:jeju_shopping/user/view/term_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
@@ -8,6 +7,8 @@ import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
 import 'package:jeju_shopping/user/view/login_screen.dart';
 import 'package:jeju_shopping/user/view/my_page_screen.dart';
+import 'package:jeju_shopping/user/view/term_detail_screen.dart';
+import 'package:jeju_shopping/user/view/term_screen.dart';
 
 final router = GoRouter(
   redirect: null,
@@ -39,6 +40,13 @@ List<RouteBase> get routes => [
                 path: 'term',
                 name: TermScreen.routeName,
                 builder: (context, state) => TermScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    name: TermDetailScreen.routeName,
+                    builder: (context, state) => TermDetailScreen(),
+                  ),
+                ],
               ),
             ],
           ),
