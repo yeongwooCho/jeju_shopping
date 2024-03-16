@@ -41,7 +41,12 @@ class DefaultLayout extends StatelessWidget {
         Positioned.fill(
           child: Visibility(
             visible: isLoading,
-            child: const CircularProgressIndicator(),
+            child: Container(
+              color: MyColor.barrier,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
           ),
         )
       ],

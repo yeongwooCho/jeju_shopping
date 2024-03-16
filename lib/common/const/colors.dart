@@ -14,5 +14,5 @@ class MyColor {
   static const darkGrey = Color(0xFF767676);
   static const middleGrey = Color(0xFFE5E5EA);
   static const lightGrey = Color(0xFFF4F5F9);
-  static const barrier = Color(0x33EBF4FF);
+  static const barrier = Color(0x331C1C1E);
 }
