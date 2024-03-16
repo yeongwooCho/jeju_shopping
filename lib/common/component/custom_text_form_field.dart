@@ -52,6 +52,7 @@ class CustomTextFormField extends StatelessWidget {
       onEditingComplete: onEditingComplete,
       focusNode: focusNode,
       obscureText: obscureText,
+      obscuringCharacter: '●',
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16.0,
