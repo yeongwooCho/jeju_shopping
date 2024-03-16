@@ -1,4 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jeju_shopping/common/component/custom_text_form_field.dart';
+import 'package:jeju_shopping/common/component/default_button.dart';
+import 'package:jeju_shopping/common/const/colors.dart';
+import 'package:jeju_shopping/common/const/text_styles.dart';
+import 'package:jeju_shopping/common/layout/default_app_bar.dart';
+import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/utils/data_utils.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class InputInfoScreen extends StatefulWidget {
   static String get routeName => 'input_info';
@@ -10,8 +19,202 @@ class InputInfoScreen extends StatefulWidget {
 }
 
 class _InputInfoScreenState extends State<InputInfoScreen> {
+  bool isLoading = false;
+  String? email;
+  String? password;
+  String? passwordCheck;
+  String birth = '생년월일';
+  bool? gender;
+
   @override
   Widget build(BuildContext context) {
-    return Text('fdas');
+    return DefaultLayout(
+      isLoading: isLoading,
+      appbar: const DefaultAppBar(title: '회원가입'),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 40.0, right: 24.0, left: 24.0),
+        child: PrimaryButton(
+          onPressed: () async {
+            setState(() {
+              isLoading = true;
+            });
+            await Future.delayed(const Duration(seconds: 1));
+            setState(() {
+              isLoading = false;
+            });
+          },
+          child: const Text('확인'),
+        ),
+      ),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 20.0),
+              const Text(
+                '계정 정보를\n입력해 주세요.',
+                style: MyTextStyle.headTitle,
+              ),
+              const SizedBox(height: 40.0),
+              CustomTextFormField(
+                hintText: '이메일',
+                onChanged: (String value) {},
+                onSaved: (String? newValue) {},
+                validator: (String? value) {
+                  return null;
+                },
+              ),
+              const SizedBox(height: 8.0),
+              CustomTextFormField(
+                hintText: '비밀번호(영문, 숫자, 특수문자 합 8~15자)',
+                obscureText: true,
+                onChanged: (String value) {},
+                onSaved: (String? newValue) {},
+                validator: (String? value) {
+                  return null;
+                },
+              ),
+              const SizedBox(height: 8.0),
+              CustomTextFormField(
+                hintText: '비밀번호 확인',
+                obscureText: true,
+                onChanged: (String value) {},
+                onSaved: (String? newValue) {},
+                validator: (String? value) {
+                  return null;
+                },
+              ),
+              const SizedBox(height: 8.0),
+              ContainerButton(
+                onPressed: () {
+                  onDatePressed();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(birth),
+                    PhosphorIcon(
+                      PhosphorIcons.caretDown(),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              renderGenderContainer(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onDatePressed() {
+    DateTime now = DateTime.now();
+
+    showCupertinoDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 240.0,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(16.0),
+              ),
+              color: MyColor.white,
+            ),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              child: CupertinoDatePicker(
+                maximumDate: DateTime(
+                    now.year, now.month, now.day, now.hour, now.minute + 1),
+                dateOrder: DatePickerDateOrder.ymd,
+                mode: CupertinoDatePickerMode.date,
+                onDateTimeChanged: (DateTime value) {
+                  setState(() {
+                    birth =
+                        DataUtils.convertDateTimeToDateString(datetime: value);
+                  });
+                },
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget renderGenderContainer() {
+    return Row(
+      children: [
+        Expanded(
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                gender = true;
+              });
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1.0,
+                  color: (gender != null && gender == true)
+                      ? MyColor.primary
+                      : MyColor.middleGrey,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '남',
+                textAlign: TextAlign.center,
+                style: MyTextStyle.bodyRegular.copyWith(
+                  color: (gender != null && gender == true)
+                      ? MyColor.primary
+                      : MyColor.darkGrey,
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 8.0),
+        Expanded(
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                gender = false;
+              });
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1.0,
+                  color: (gender != null && gender == false)
+                      ? MyColor.primary
+                      : MyColor.middleGrey,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '여',
+                textAlign: TextAlign.center,
+                style: MyTextStyle.bodyRegular.copyWith(
+                  color: (gender != null && gender == false)
+                      ? MyColor.primary
+                      : MyColor.darkGrey,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

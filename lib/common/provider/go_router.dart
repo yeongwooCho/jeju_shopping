@@ -14,7 +14,7 @@ import 'package:jeju_shopping/user/view/term_screen.dart';
 
 final router = GoRouter(
   redirect: null,
-  initialLocation: '/splash',
+  initialLocation: '/login/email_login/term/certification/input_info',
   routes: routes,
   errorBuilder: (context, state) => ErrorScreen(
     error: state.error.toString(),
