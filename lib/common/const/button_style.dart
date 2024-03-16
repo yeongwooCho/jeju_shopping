@@ -26,7 +26,7 @@ class MyButtonStyle {
     disabledForegroundColor: MyColor.darkGrey,
     disabledBackgroundColor: MyColor.lightGrey,
     elevation: 0,
-    padding: const EdgeInsets.symmetric(vertical: 12.0),
+    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
     minimumSize: const Size(60, 48),
     shape: RoundedRectangleBorder(
       side: const BorderSide(
@@ -35,7 +35,7 @@ class MyButtonStyle {
       ),
       borderRadius: BorderRadius.circular(8.0),
     ),
-    textStyle: MyTextStyle.bodyBold.copyWith(
+    textStyle: MyTextStyle.bodyRegular.copyWith(
       color: MyColor.primary,
     ),
   );
