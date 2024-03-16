@@ -4,7 +4,9 @@ import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
+import 'package:jeju_shopping/user/view/certification_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
+import 'package:jeju_shopping/user/view/input_info_screen.dart';
 import 'package:jeju_shopping/user/view/login_screen.dart';
 import 'package:jeju_shopping/user/view/my_page_screen.dart';
 import 'package:jeju_shopping/user/view/term_detail_screen.dart';
@@ -41,6 +43,18 @@ List<RouteBase> get routes => [
                 name: TermScreen.routeName,
                 builder: (context, state) => TermScreen(),
                 routes: [
+                  GoRoute(
+                    path: 'certification',
+                    name: CertificationScreen.routeName,
+                    builder: (context, state) => CertificationScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'input_info',
+                        name: InputInfoScreen.routeName,
+                        builder: (context, state) => InputInfoScreen(),
+                      ),
+                    ],
+                  ),
                   GoRoute(
                     path: ':id',
                     name: TermDetailScreen.routeName,
