@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/common/component/custom_ink_well_button.dart';
 import 'package:jeju_shopping/common/component/custom_text_form_field.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
@@ -7,6 +8,7 @@ import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
+import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class InputInfoScreen extends StatefulWidget {
@@ -42,6 +44,7 @@ class _InputInfoScreenState extends State<InputInfoScreen> {
             setState(() {
               isLoading = false;
             });
+            context.goNamed(EatingHabitScreen.routeName);
           },
           child: const Text('확인'),
         ),
@@ -154,64 +157,26 @@ class _InputInfoScreenState extends State<InputInfoScreen> {
     return Row(
       children: [
         Expanded(
-          child: InkWell(
+          child: CustomInkWellButton(
             onTap: () {
               setState(() {
                 gender = true;
               });
             },
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1.0,
-                  color: (gender != null && gender == true)
-                      ? MyColor.primary
-                      : MyColor.middleGrey,
-                ),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                '남',
-                textAlign: TextAlign.center,
-                style: MyTextStyle.bodyRegular.copyWith(
-                  color: (gender != null && gender == true)
-                      ? MyColor.primary
-                      : MyColor.darkGrey,
-                ),
-              ),
-            ),
+            title: '남',
+            isSelected: (gender != null && gender == true),
           ),
         ),
         const SizedBox(width: 8.0),
         Expanded(
-          child: InkWell(
+          child: CustomInkWellButton(
             onTap: () {
               setState(() {
                 gender = false;
               });
             },
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1.0,
-                  color: (gender != null && gender == false)
-                      ? MyColor.primary
-                      : MyColor.middleGrey,
-                ),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                '여',
-                textAlign: TextAlign.center,
-                style: MyTextStyle.bodyRegular.copyWith(
-                  color: (gender != null && gender == false)
-                      ? MyColor.primary
-                      : MyColor.darkGrey,
-                ),
-              ),
-            ),
+            title: '여',
+            isSelected: (gender != null && gender == false),
           ),
         ),
       ],
