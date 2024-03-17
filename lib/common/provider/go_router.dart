@@ -3,6 +3,8 @@ import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
+import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
+import 'package:jeju_shopping/life_style/view/life_style_habit_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/user/view/certification_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
@@ -28,6 +30,7 @@ List<RouteBase> get routes => [
         name: SplashScreen.routeName,
         builder: (context, state) => SplashScreen(),
       ),
+
       GoRoute(
         path: '/login',
         name: LoginScreen.routeName,
@@ -66,6 +69,20 @@ List<RouteBase> get routes => [
           ),
         ],
       ),
+
+      GoRoute(
+        path: '/eating',
+        name: EatingHabitScreen.routeName,
+        builder: (context, state) => EatingHabitScreen(),
+        routes: [
+          GoRoute(
+            path: 'life_style',
+            name: LifeStyleHabitScreen.routeName,
+            builder: (context, state) => LifeStyleHabitScreen(),
+          )
+        ],
+      ),
+
       ShellRoute(
         builder: (context, state, child) {
           return RootTab(child: child);
