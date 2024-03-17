@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:jeju_shopping/common/const/colors.dart';
 
 class MyTextStyle {
   static const letterSpacing = -1.025;
   static const height = 1.2;
+  static const basicColor = MyColor.text;
 
   static const headTitle = TextStyle(
     fontSize: 32.0,
     fontWeight: FontWeight.w600,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const bodyTitleBold = TextStyle(
@@ -16,6 +19,7 @@ class MyTextStyle {
     fontWeight: FontWeight.w600,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const bodyBold = TextStyle(
@@ -23,6 +27,7 @@ class MyTextStyle {
     fontWeight: FontWeight.w600,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const bodyMedium = TextStyle(
@@ -30,6 +35,7 @@ class MyTextStyle {
     fontWeight: FontWeight.w500,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const bodyRegular = TextStyle(
@@ -37,6 +43,7 @@ class MyTextStyle {
     fontWeight: FontWeight.w400,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const descriptionBold = TextStyle(
@@ -44,6 +51,7 @@ class MyTextStyle {
     fontWeight: FontWeight.w600,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const descriptionMedium = TextStyle(
@@ -51,6 +59,7 @@ class MyTextStyle {
     fontWeight: FontWeight.w500,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const descriptionRegular = TextStyle(
@@ -58,12 +67,14 @@ class MyTextStyle {
     fontWeight: FontWeight.w400,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 
   static const minimumRegular = TextStyle(
-    fontSize: 12.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.w400,
     letterSpacing: letterSpacing,
     height: height,
+    color: basicColor,
   );
 }
