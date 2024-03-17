@@ -24,9 +24,6 @@ class RootTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(GoRouterState.of(context).location),
-      ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int index) {
