@@ -80,6 +80,7 @@ flutter:
   assets:
     - asset/img/logo/
     - asset/img/social_button/
+    - asset/img/category/
 
   # An image assets can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
