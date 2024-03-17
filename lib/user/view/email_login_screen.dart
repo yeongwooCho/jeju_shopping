@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jeju_shopping/user/view/term_screen.dart';
 import 'package:jeju_shopping/common/component/custom_text_form_field.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/view/root_tab.dart';
+import 'package:jeju_shopping/product/view/product_screen.dart';
+import 'package:jeju_shopping/user/view/term_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class EmailLoginScreen extends StatefulWidget {
@@ -55,7 +57,9 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   ),
                   const SizedBox(height: 20.0),
                   PrimaryButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.goNamed(ProductScreen.routeName);
+                    },
                     child: const Text('로그인'),
                   ),
                 ],

@@ -4,6 +4,7 @@ import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/life_style/component/check_container.dart';
 import 'package:jeju_shopping/life_style/model/enum/life_style_title.dart';
 
@@ -20,7 +21,7 @@ class LifeStyleHabitScreen extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 40.0, right: 24.0, left: 24.0),
         child: PrimaryButton(
           onPressed: () async {
-            context.goNamed(routeName);
+            context.go('/product');
           },
           child: const Text('다음'),
         ),

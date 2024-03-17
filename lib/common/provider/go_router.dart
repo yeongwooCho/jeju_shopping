@@ -16,7 +16,7 @@ import 'package:jeju_shopping/user/view/term_screen.dart';
 
 final router = GoRouter(
   redirect: null,
-  initialLocation: '/login/email_login/term/certification/input_info',
+  initialLocation: '/splash',
   routes: routes,
   errorBuilder: (context, state) => ErrorScreen(
     error: state.error.toString(),
@@ -91,16 +91,19 @@ List<RouteBase> get routes => [
           GoRoute(
             // /nested/a
             path: '/product',
+            name: ProductScreen.routeName,
             builder: (context, state) => ProductScreen(),
           ),
           GoRoute(
             // /nested/b
             path: '/cook',
+            name: CookScreen.routeName,
             builder: (context, state) => CookScreen(),
           ),
           GoRoute(
             // /nested/c
             path: '/my_page',
+            name: MyPageScreen.routeName,
             builder: (context, state) => MyPageScreen(),
           ),
         ],
