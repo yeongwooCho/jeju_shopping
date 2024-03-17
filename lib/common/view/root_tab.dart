@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/common/const/colors.dart';
+import 'package:jeju_shopping/common/const/text_styles.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class RootTab extends StatelessWidget {
   static String get routeName => "root";
@@ -26,6 +29,14 @@ class RootTab extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0.0,
+        backgroundColor: MyColor.white,
+        selectedItemColor: MyColor.text,
+        selectedLabelStyle: MyTextStyle.bodyBold.copyWith(fontSize: 12.0),
+        unselectedItemColor: MyColor.middleGrey,
+        unselectedFontSize: 12.0,
+        unselectedLabelStyle: MyTextStyle.bodyBold.copyWith(fontSize: 12.0),
+        currentIndex: getIndex(context),
         onTap: (int index) {
           if (index == 0) {
             context.go('/product');
@@ -35,19 +46,27 @@ class RootTab extends StatelessWidget {
             context.go('/my_page');
           }
         },
-        currentIndex: getIndex(context),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'home',
+            icon: PhosphorIcon(
+              PhosphorIcons.house(),
+              size: 30.0,
+            ),
+            label: '홈',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'notifications',
+            icon: PhosphorIcon(
+              PhosphorIcons.cookingPot(),
+              size: 30.0,
+            ),
+            label: '웰빙쿡',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'person',
+            icon: PhosphorIcon(
+              PhosphorIcons.user(),
+              size: 30.0,
+            ),
+            label: '내정보',
           ),
         ],
       ),
