@@ -44,6 +44,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
           'asset/img/product/product_1.jpg',
           'asset/img/product/product_1.jpg',
         ],
+        preferState: ProductPreferState.prefer,
       ),
       ProductModel(
         id: '1',
@@ -59,6 +60,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
           'asset/img/product/product_1.jpg',
           'asset/img/product/product_1.jpg',
         ],
+        preferState: ProductPreferState.prefer,
       ),
       ProductModel(
         id: '2',
@@ -69,6 +71,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.prefer,
       ),
       ProductModel(
         id: '3',
@@ -79,6 +82,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.best,
       ),
       ProductModel(
         id: '4',
@@ -89,6 +93,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.prefer,
       ),
       ProductModel(
         id: '5',
@@ -99,6 +104,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.fresh,
       ),
       ProductModel(
         id: '6',
@@ -109,6 +115,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.prefer,
       ),
       ProductModel(
         id: '7',
@@ -119,6 +126,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.fresh,
       ),
       ProductModel(
         id: '8',
@@ -129,6 +137,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.prefer,
       ),
       ProductModel(
         id: '9',
@@ -139,6 +148,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.fresh,
       ),
       ProductModel(
         id: '10',
@@ -149,6 +159,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
         detailImageUrls: [],
+        preferState: ProductPreferState.prefer,
       ),
     ];
   }

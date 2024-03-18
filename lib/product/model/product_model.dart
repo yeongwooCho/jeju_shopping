@@ -11,6 +11,16 @@ enum Category {
   final String label;
 }
 
+enum ProductPreferState {
+  fresh('신선하고 깔끔한 프레시 상품'),
+  best('가장 많이 판매된 베스트 상품'),
+  prefer('고객님 맞춤 추천 상품');
+
+  const ProductPreferState(this.label);
+
+  final String label;
+}
+
 class ProductModel {
   final String id;
   final String name;
@@ -18,6 +28,7 @@ class ProductModel {
   final int deliveryPrice;
   final bool isLike;
   final Category category;
+  final ProductPreferState preferState;
   final String mainImageUrl;
   final List<String> detailImageUrls;
 
@@ -28,6 +39,7 @@ class ProductModel {
     required this.deliveryPrice,
     required this.isLike,
     required this.category,
+    required this.preferState,
     required this.mainImageUrl,
     required this.detailImageUrls,
   });
@@ -40,6 +52,7 @@ class ProductModel {
     String? imageUrl,
     bool? isLike,
     Category? category,
+    ProductPreferState? preferState,
     String? mainImageUrl,
     List<String>? detailImageUrls,
   }) {
@@ -48,6 +61,7 @@ class ProductModel {
       name: name ?? this.name,
       price: price ?? this.price,
       deliveryPrice: deliveryPrice ?? this.deliveryPrice,
+      preferState: preferState ?? this.preferState,
       isLike: isLike ?? this.isLike,
       category: category ?? this.category,
       mainImageUrl: mainImageUrl ?? this.mainImageUrl,

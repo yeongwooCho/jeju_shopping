@@ -25,7 +25,18 @@ class ProductScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productProvider);
+    final products = ref.watch(productProvider);
+
+    final freshProducts = products
+        .where((element) => element.preferState == ProductPreferState.fresh)
+        .toList();
+    final bestProducts = products
+        .where((element) => element.preferState == ProductPreferState.best)
+        .toList();
+    final preferProducts = products
+        .where((element) => element.preferState == ProductPreferState.prefer)
+        .toList();
+
     final carts = ref.watch(cartProvider);
 
     return DefaultLayout(
@@ -74,14 +85,23 @@ class ProductScreen extends ConsumerWidget {
             ),
           ),
           renderCategories(),
-          SliverToBoxAdapter(child: DividerContainer()),
-          SliverToBoxAdapter(child: const SizedBox(height: 40.0)),
-          renderProducts(title: '신선하고 깔끔한 프레시 상품', products: state),
-          SliverToBoxAdapter(child: const SizedBox(height: 40.0)),
-          renderProducts(title: '가장 많이 판매된 베스트 상품', products: state),
-          SliverToBoxAdapter(child: const SizedBox(height: 40.0)),
-          renderProducts(title: '고객님 맞춤 추천 상품', products: state),
-          SliverToBoxAdapter(child: const SizedBox(height: 40.0)),
+          const SliverToBoxAdapter(child: DividerContainer()),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          renderProducts(
+            title: ProductPreferState.fresh.label,
+            products: freshProducts,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          renderProducts(
+            title: ProductPreferState.best.label,
+            products: bestProducts,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          renderProducts(
+            title: ProductPreferState.prefer.label,
+            products: preferProducts,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
         ],
       ),
     );

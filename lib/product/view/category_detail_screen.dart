@@ -17,7 +17,10 @@ class CategoryDetailScreen extends ConsumerWidget {
     final categoryId = GoRouterState.of(context).pathParameters['id'];
     final category = DataUtils.getCategoryTitle(index: categoryId!);
 
-    final products = ref.read(productProvider);
+    final products = ref
+        .watch(productProvider)
+        .where((e) => e.category.label == category)
+        .toList();
 
     return DefaultLayout(
       appbar: DefaultAppBar(title: category),
