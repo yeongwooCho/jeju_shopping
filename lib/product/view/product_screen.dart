@@ -65,6 +65,7 @@ class ProductScreen extends ConsumerWidget {
                   style: MyTextStyle.bodyTitleBold,
                 ),
                 SeeMoreButton(
+                  title: '더보기',
                   onTap: () {},
                 ),
               ],

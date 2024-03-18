@@ -4,10 +4,12 @@ import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class SeeMoreButton extends StatelessWidget {
+  final String title;
   final VoidCallback onTap;
 
   const SeeMoreButton({
     super.key,
+    required this.title,
     required this.onTap,
   });
 
@@ -19,8 +21,8 @@ class SeeMoreButton extends StatelessWidget {
         color: MyColor.white,
         child: Row(
           children: [
-            const Text(
-              '더보기',
+            Text(
+              title,
               style: MyTextStyle.minimumRegular,
             ),
             PhosphorIcon(
