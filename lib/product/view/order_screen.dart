@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/component/see_more_button.dart';
@@ -6,6 +7,7 @@ import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/view/completion_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class OrderScreen extends StatelessWidget {
@@ -32,8 +34,13 @@ class OrderScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: PrimaryButton(
-                onPressed: () {},
-                child: Text('결제하기'),
+                onPressed: () {
+                  context.goNamed(
+                    CompletionScreen.routeName,
+                    pathParameters: {'title': '결제가\n정상적으로\n완료되었습니다.'},
+                  );
+                },
+                child: const Text('결제하기'),
               ),
             ),
             const SizedBox(height: 40.0),

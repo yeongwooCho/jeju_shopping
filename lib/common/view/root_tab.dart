@@ -6,8 +6,6 @@ import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class RootTab extends StatelessWidget {
-  static String get routeName => "root";
-
   final Widget child;
 
   const RootTab({

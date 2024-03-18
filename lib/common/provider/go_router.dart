@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/common/view/completion_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
@@ -38,7 +39,11 @@ List<RouteBase> get routes => [
         name: SplashScreen.routeName,
         builder: (context, state) => SplashScreen(),
       ),
-
+      GoRoute(
+        path: '/completion/:title',
+        name: CompletionScreen.routeName,
+        builder: (context, state) => CompletionScreen(),
+      ),
       GoRoute(
         path: '/login',
         name: LoginScreen.routeName,
