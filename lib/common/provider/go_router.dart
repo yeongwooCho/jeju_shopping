@@ -162,7 +162,7 @@ List<RouteBase> get routes => [
         routes: [
           GoRoute(
             parentNavigatorKey: _rootNavigatorKey,
-            path: 'detail',
+            path: 'detail/:title',
             name: SearchDetailScreen.routeName,
             builder: (context, state) => SearchDetailScreen(),
           )

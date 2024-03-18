@@ -7,10 +7,17 @@ import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/product/view/search_detail_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   static String get routeName => 'search';
 
   const SearchScreen({super.key});
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  String title = '';
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,12 @@ class SearchScreen extends StatelessWidget {
                 hintText: '검색',
                 suffixIcon: IconButton(
                   onPressed: () {
-                    context.pushNamed(SearchDetailScreen.routeName);
+                    context.pushNamed(
+                      SearchDetailScreen.routeName,
+                      pathParameters: {
+                        'title': title,
+                      },
+                    );
                   },
                   icon: PhosphorIcon(
                     PhosphorIcons.magnifyingGlass(),
@@ -33,13 +45,20 @@ class SearchScreen extends StatelessWidget {
                     color: MyColor.darkGrey,
                   ),
                 ),
-                onChanged: (String value) {},
+                onChanged: (String value) {
+                  title = value;
+                },
                 onSaved: (String? newValue) {},
                 validator: (String? value) {
                   return null;
                 },
                 onEditingComplete: () {
-                  context.pushNamed(SearchDetailScreen.routeName);
+                  context.pushNamed(
+                    SearchDetailScreen.routeName,
+                    pathParameters: {
+                      'title': title,
+                    },
+                  );
                 },
               ),
             ),
