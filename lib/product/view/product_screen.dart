@@ -1,6 +1,8 @@
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/cart/provider/cart_provider.dart';
 import 'package:jeju_shopping/cart/view/cart_screen.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/component/see_more_button.dart';
@@ -24,6 +26,7 @@ class ProductScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(productProvider);
+    final carts = ref.watch(cartProvider);
 
     return DefaultLayout(
       appbar: DefaultAppBar(
@@ -39,7 +42,17 @@ class ProductScreen extends ConsumerWidget {
               context.pushNamed(CartScreen.routeName);
             },
             iconSize: 30.0,
-            icon: PhosphorIcon(PhosphorIcons.shoppingCart()),
+            icon: badges.Badge(
+              showBadge: carts.isNotEmpty,
+              badgeContent: Text(
+                carts.length.toString(),
+                style: MyTextStyle.minimumRegular.copyWith(
+                  color: MyColor.white,
+                  height: 1.0,
+                ),
+              ),
+              child: PhosphorIcon(PhosphorIcons.shoppingCart()),
+            ),
           ),
           IconButton(
             onPressed: () {
