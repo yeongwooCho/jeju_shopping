@@ -32,7 +32,7 @@ class HorizontalItemList extends StatelessWidget {
             onTap: () {
               context.goNamed(
                 ProductDetailScreen.routeName,
-                pathParameters: {'id': index.toString()},
+                pathParameters: {'id': product.id},
               );
             },
             child: SizedBox(
