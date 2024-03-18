@@ -33,7 +33,7 @@ class VerticalItemListCard extends ConsumerWidget {
       child: Row(
         children: [
           Image.asset(
-            product.imageUrl,
+            product.mainImageUrl,
             fit: BoxFit.cover,
             width: 100.0,
             height: 100.0,

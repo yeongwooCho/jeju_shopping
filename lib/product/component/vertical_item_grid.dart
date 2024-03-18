@@ -52,7 +52,7 @@ class VerticalItemList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  product.imageUrl,
+                  product.mainImageUrl,
                   fit: BoxFit.cover,
                   height: itemWidth,
                 ),

@@ -16,18 +16,20 @@ class ProductModel {
   final String name;
   final int price;
   final int deliveryPrice;
-  final String imageUrl;
   final bool isLike;
   final Category category;
+  final String mainImageUrl;
+  final List<String> detailImageUrls;
 
   ProductModel({
     required this.id,
     required this.name,
     required this.price,
     required this.deliveryPrice,
-    required this.imageUrl,
     required this.isLike,
     required this.category,
+    required this.mainImageUrl,
+    required this.detailImageUrls,
   });
 
   ProductModel copyWith({
@@ -38,15 +40,18 @@ class ProductModel {
     String? imageUrl,
     bool? isLike,
     Category? category,
+    String? mainImageUrl,
+    List<String>? detailImageUrls,
   }) {
     return ProductModel(
       id: id ?? this.id,
       name: name ?? this.name,
       price: price ?? this.price,
       deliveryPrice: deliveryPrice ?? this.deliveryPrice,
-      imageUrl: imageUrl ?? this.imageUrl,
       isLike: isLike ?? this.isLike,
       category: category ?? this.category,
+      mainImageUrl: mainImageUrl ?? this.mainImageUrl,
+      detailImageUrls: detailImageUrls ?? this.detailImageUrls,
     );
   }
 }
