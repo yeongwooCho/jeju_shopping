@@ -5,12 +5,13 @@ import 'package:jeju_shopping/product/model/product_model.dart';
 
 final orderProvider =
     StateNotifierProvider<OrderStateNotifier, List<OrderModel>>((ref) {
-  return OrderStateNotifier();
+  return OrderStateNotifier(orders: []);
 });
 
 class OrderStateNotifier extends StateNotifier<List<OrderModel>> {
-  OrderStateNotifier()
-      : super([
+  OrderStateNotifier({
+    required List<OrderModel> orders,
+  }) : super([
           // OrderModel(
           //   productModel: productModel,
           //   amount: amount,
@@ -43,6 +44,16 @@ class OrderStateNotifier extends StateNotifier<List<OrderModel>> {
                 amount: e.amount,
                 deliveryState: DeliveryState.no,
                 createdAt: DateTime.now(),
+              ))
+          .toList()
+    ];
+  }
+
+  void orderProducts() {
+    state = [
+      ...state
+          .map((e) => e.copyWith(
+                deliveryState: DeliveryState.ready,
               ))
           .toList()
     ];

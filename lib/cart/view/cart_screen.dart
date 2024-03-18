@@ -40,8 +40,9 @@ class _CartScreenState extends ConsumerState<CartScreen> {
       bottomNavigationBar: Hidable(
         controller: scrollController,
         preferredWidgetSize: Size(double.infinity, 68.0),
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 20.0, left: 24.0, right: 24.0),
+        child: carts.isNotEmpty
+            ? Padding(
+                padding: const EdgeInsets.only(bottom: 20.0, left: 24.0, right: 24.0),
           child: Row(
             children: [
               Expanded(
@@ -57,7 +58,8 @@ class _CartScreenState extends ConsumerState<CartScreen> {
               ),
             ],
           ),
-        ),
+              )
+            : const SizedBox(),
       ),
       child: carts.isNotEmpty
           ? Column(

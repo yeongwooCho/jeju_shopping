@@ -19,4 +19,18 @@ class OrderModel {
     required this.deliveryState,
     required this.createdAt,
   });
+
+  OrderModel copyWith({
+    ProductModel? productModel,
+    int? amount,
+    DeliveryState? deliveryState,
+    DateTime? createdAt,
+  }) {
+    return OrderModel(
+      productModel: productModel ?? this.productModel,
+      amount: amount ?? this.amount,
+      deliveryState: deliveryState ?? this.deliveryState,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
 }

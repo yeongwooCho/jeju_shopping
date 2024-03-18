@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/cart/provider/cart_provider.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/component/see_more_button.dart';
@@ -48,6 +49,8 @@ class OrderScreen extends ConsumerWidget {
                     CompletionScreen.routeName,
                     pathParameters: {'title': '결제가\n정상적으로\n완료되었습니다.'},
                   );
+                  ref.read(orderProvider.notifier).orderProducts();
+                  ref.read(cartProvider.notifier).removeAll();
                 },
                 child: const Text('결제하기'),
               ),
