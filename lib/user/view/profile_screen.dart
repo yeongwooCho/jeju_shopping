@@ -6,6 +6,7 @@ import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/delivery/view/delivery_screen.dart';
 import 'package:jeju_shopping/life_style/model/enum/life_style_title.dart';
 import 'package:jeju_shopping/life_style/provider/life_style_provider.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
@@ -134,7 +135,9 @@ class ProfileScreen extends ConsumerWidget {
                   ProfileMenuButton(
                     icon: PhosphorIcons.truck(),
                     title: '배송 현황',
-                    onTap: () {},
+                    onTap: () {
+                      context.goNamed(DeliveryScreen.routeName);
+                    },
                   ),
                   const SizedBox(height: 12.0),
                   ProfileMenuButton(

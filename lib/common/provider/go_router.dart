@@ -87,26 +87,6 @@ List<RouteBase> get routes => [
         ],
       ),
       GoRoute(
-        parentNavigatorKey: _rootNavigatorKey,
-        path: '/cart',
-        name: CartScreen.routeName,
-        builder: (context, state) => CartScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootNavigatorKey,
-        path: '/search',
-        name: SearchScreen.routeName,
-        builder: (context, state) => SearchScreen(),
-        routes: [
-          GoRoute(
-            parentNavigatorKey: _rootNavigatorKey,
-            path: 'detail',
-            name: SearchDetailScreen.routeName,
-            builder: (context, state) => SearchDetailScreen(),
-          )
-        ],
-      ),
-      GoRoute(
         path: '/eating',
         name: EatingHabitScreen.routeName,
         builder: (context, state) => EatingHabitScreen(),
@@ -117,12 +97,6 @@ List<RouteBase> get routes => [
             builder: (context, state) => LifeStyleHabitScreen(),
           )
         ],
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootNavigatorKey,
-        path: '/order/:id',
-        name: OrderScreen.routeName,
-        builder: (context, state) => OrderScreen(),
       ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -159,12 +133,39 @@ List<RouteBase> get routes => [
             builder: (context, state) => ProfileScreen(),
             routes: [
               GoRoute(
-                path: '/delivery',
+                parentNavigatorKey: _rootNavigatorKey,
+                path: 'delivery',
                 name: DeliveryScreen.routeName,
                 builder: (context, state) => DeliveryScreen(),
               ),
             ],
           ),
+        ],
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/cart',
+        name: CartScreen.routeName,
+        builder: (context, state) => CartScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/order/:id',
+        name: OrderScreen.routeName,
+        builder: (context, state) => OrderScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/search',
+        name: SearchScreen.routeName,
+        builder: (context, state) => SearchScreen(),
+        routes: [
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: 'detail',
+            name: SearchDetailScreen.routeName,
+            builder: (context, state) => SearchDetailScreen(),
+          )
         ],
       ),
     ];
