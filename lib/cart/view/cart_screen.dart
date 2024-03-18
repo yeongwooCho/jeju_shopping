@@ -56,12 +56,12 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                                       PhosphorIconsStyle.fill,
                                     ),
                                     color: MyColor.primary,
+                                    size: 32.0,
                                   )
                                 : PhosphorIcon(
-                                    PhosphorIcons.circle(
-                                      PhosphorIconsStyle.bold,
-                                    ),
+                                    PhosphorIcons.circle(),
                                     color: MyColor.text,
+                                    size: 32.0,
                                   ),
                             const SizedBox(width: 8.0),
                             const Text(
@@ -96,15 +96,14 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                              left: 24.0,
-                              right: 24.0,
-                              bottom: 8.0,
+                              left: 16.0,
+                              right: 16.0,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                InkWell(
-                                  onTap: () {
+                                IconButton(
+                                  onPressed: () {
                                     ref
                                         .read(cartProvider.notifier)
                                         .updateSelected(
@@ -112,22 +111,24 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                                           isSelected: !cart.isSelected,
                                         );
                                   },
-                                  child: cart.isSelected
+                                  icon: cart.isSelected
                                       ? PhosphorIcon(
                                           PhosphorIcons.checkCircle(
-                                              PhosphorIconsStyle.fill),
+                                            PhosphorIconsStyle.fill,
+                                          ),
                                           color: MyColor.primary,
                                         )
                                       : PhosphorIcon(PhosphorIcons.circle()),
+                                  iconSize: 32.0,
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    print(cart.id);
+                                IconButton(
+                                  onPressed: () {
                                     ref
                                         .read(cartProvider.notifier)
                                         .removeProduct(id: cart.id);
                                   },
-                                  child: PhosphorIcon(PhosphorIcons.x()),
+                                  icon: PhosphorIcon(PhosphorIcons.x()),
+                                  iconSize: 32.0,
                                 ),
                               ],
                             ),
