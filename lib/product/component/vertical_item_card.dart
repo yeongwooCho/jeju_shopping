@@ -8,11 +8,13 @@ import 'package:jeju_shopping/product/model/product_model.dart';
 class VerticalItemListCard extends ConsumerWidget {
   final ProductModel product;
   final int amount;
+  final Widget? amountUpdateButton;
 
   const VerticalItemListCard({
     super.key,
     required this.product,
     required this.amount,
+    this.amountUpdateButton,
   });
 
   factory VerticalItemListCard.fromModel({
@@ -48,9 +50,15 @@ class VerticalItemListCard extends ConsumerWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8.0),
-                Text(
-                  '갯수: $amount개',
-                  style: MyTextStyle.descriptionRegular,
+                Row(
+                  children: [
+                    Text(
+                      '갯수: $amount개',
+                      style: MyTextStyle.descriptionRegular,
+                    ),
+                    const SizedBox(width: 12.0),
+                    if (amountUpdateButton != null) amountUpdateButton!,
+                  ],
                 ),
                 const SizedBox(height: 8.0),
                 Text(

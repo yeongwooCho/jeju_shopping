@@ -1,7 +1,9 @@
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidable/hidable.dart';
+import 'package:jeju_shopping/cart/provider/cart_provider.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
@@ -9,9 +11,9 @@ import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
+import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
-import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
@@ -35,6 +37,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
         .watch(productProvider)
         .firstWhere((element) => element.id == productId);
 
+    final carts = ref.watch(cartProvider);
+
     final fullWidth = MediaQuery.of(context).size.width;
     final safeTopPadding = MediaQuery.of(context).padding.top;
     final safeBottomPadding = MediaQuery.of(context).padding.bottom;
@@ -54,6 +58,11 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
           child: Row(
             children: [
               InkWell(
+                onTap: () {
+                  ref
+                      .read(cartProvider.notifier)
+                      .addProduct(product: product, amount: 1);
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -64,8 +73,18 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: PhosphorIcon(
-                      PhosphorIcons.shoppingCart(),
+                    child: badges.Badge(
+                      showBadge: carts.isNotEmpty,
+                      badgeContent: Text(
+                        carts.length.toString(),
+                        style: MyTextStyle.minimumRegular.copyWith(
+                          color: MyColor.white,
+                          height: 1.0,
+                        ),
+                      ),
+                      child: PhosphorIcon(
+                        PhosphorIcons.shoppingCart(),
+                      ),
                     ),
                   ),
                 ),
