@@ -130,7 +130,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              'asset/img/product/product_1.jpg',
+              product.mainImageUrl,
               width: fullWidth,
               height: fullWidth,
               fit: BoxFit.cover,
@@ -147,18 +147,19 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                 style: MyTextStyle.bigTitleBold,
               ),
             ),
-            Image.asset(
-              'asset/img/product/product_1.jpg',
-              width: fullWidth,
-              height: fullWidth,
-              fit: BoxFit.cover,
-            ),
-            Image.asset(
-              'asset/img/product/product_1.jpg',
-              width: fullWidth,
-              height: fullWidth,
-              fit: BoxFit.cover,
-            ),
+            ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: product.detailImageUrls.length,
+              itemBuilder: (context, index) {
+                return Image.asset(
+                  product.detailImageUrls[index],
+                  width: fullWidth,
+                  height: fullWidth,
+                  fit: BoxFit.cover,
+                );
+              },
+            )
           ],
         ),
       ),

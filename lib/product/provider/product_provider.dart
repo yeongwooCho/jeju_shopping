@@ -34,7 +34,16 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
-        detailImageUrls: [],
+        detailImageUrls: [
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+        ],
       ),
       ProductModel(
         id: '1',
@@ -44,7 +53,12 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
         isLike: false,
         mainImageUrl: 'asset/img/product/product_1.jpg',
-        detailImageUrls: [],
+        detailImageUrls: [
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+          'asset/img/product/product_1.jpg',
+        ],
       ),
       ProductModel(
         id: '2',
