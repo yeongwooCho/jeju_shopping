@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jeju_shopping/cart/provider/cart_provider.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/product/component/vertical_item_card.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class CartScreen extends ConsumerWidget {
@@ -14,6 +16,8 @@ class CartScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final carts = ref.watch(cartProvider);
+
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '장바구니'),
       child: Column(
@@ -51,6 +55,10 @@ class CartScreen extends ConsumerWidget {
             ),
           ),
           DividerContainer(),
+          ...carts.map(
+            (e) =>
+                VerticalItemListCard(product: e.productModel, amount: e.amount),
+          ),
         ],
       ),
     );
