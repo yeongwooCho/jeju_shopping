@@ -7,6 +7,7 @@ import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/product/component/horizontal_item_list.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
@@ -120,7 +121,7 @@ class ProductScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 4.0),
                       Text(
-                        getCategoryTitle(index: index),
+                        DataUtils.getCategoryTitle(index: index.toString()),
                         style: MyTextStyle.descriptionRegular.copyWith(
                           color: MyColor.darkGrey,
                         ),
@@ -137,26 +138,5 @@ class ProductScreen extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  String getCategoryTitle({
-    required int index,
-  }) {
-    switch (index) {
-      case 0:
-        return Category.special.label;
-      case 1:
-        return Category.agricultural.label;
-      case 2:
-        return Category.sea.label;
-      case 3:
-        return Category.livestock.label;
-      case 4:
-        return Category.healthy.label;
-      case 5:
-        return Category.convenience.label;
-      default:
-        return '';
-    }
   }
 }
