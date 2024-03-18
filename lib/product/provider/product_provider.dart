@@ -14,7 +14,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
   List<ProductModel> getItems() {
     return [
       ProductModel(
-        id: 0,
+        id: '0',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -22,7 +22,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 1,
+        id: '1',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -30,7 +30,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 2,
+        id: '2',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -38,7 +38,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 3,
+        id: '3',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -46,7 +46,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 4,
+        id: '4',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -54,7 +54,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 5,
+        id: '5',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -62,7 +62,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 6,
+        id: '6',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -70,7 +70,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 7,
+        id: '7',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -78,7 +78,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 8,
+        id: '8',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -86,7 +86,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 9,
+        id: '9',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,
@@ -94,7 +94,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         category: Category.special,
       ),
       ProductModel(
-        id: 10,
+        id: '10',
         name: '곤드레만드레 나는 취해버렸어 너의 사랑에 취해벼렸ㅁㄴㅇ동해붐ㅇㄴㄹ',
         price: 24800,
         deliveryPrice: 3000,

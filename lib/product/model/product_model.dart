@@ -12,7 +12,7 @@ enum Category {
 }
 
 class ProductModel {
-  final int id;
+  final String id;
   final String name;
   final int price;
   final int deliveryPrice;
