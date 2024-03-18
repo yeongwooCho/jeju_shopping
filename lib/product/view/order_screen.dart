@@ -61,7 +61,7 @@ class OrderScreen extends StatelessWidget {
             children: [
               const Text(
                 '배송지 정보',
-                style: MyTextStyle.productTitle,
+                style: MyTextStyle.bigTitleBold,
               ),
               SeeMoreButton(
                 title: '배송지 변경',
@@ -97,7 +97,7 @@ class OrderScreen extends StatelessWidget {
         children: [
           Text(
             '상품 정보',
-            style: MyTextStyle.productTitle,
+            style: MyTextStyle.bigTitleBold,
           ),
           const SizedBox(height: 16.0),
           Text('fsad'),
@@ -116,7 +116,7 @@ class OrderScreen extends StatelessWidget {
         children: [
           Text(
             '결제 방법',
-            style: MyTextStyle.productTitle,
+            style: MyTextStyle.bigTitleBold,
           ),
           const SizedBox(height: 16.0),
           _TossWidget(),
@@ -133,7 +133,7 @@ class OrderScreen extends StatelessWidget {
         children: [
           const Text(
             '결제 정보',
-            style: MyTextStyle.productTitle,
+            style: MyTextStyle.bigTitleBold,
           ),
           const SizedBox(height: 16.0),
           renderTitleAndDescription(

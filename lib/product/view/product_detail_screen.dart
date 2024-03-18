@@ -107,7 +107,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               ),
               child: const Text(
                 '제품 상세 설명',
-                style: MyTextStyle.productTitle,
+                style: MyTextStyle.bigTitleBold,
               ),
             ),
             Image.asset(
@@ -138,7 +138,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
         children: [
           Text(
             product.name,
-            style: MyTextStyle.productTitle,
+            style: MyTextStyle.bigTitleBold,
           ),
           const SizedBox(height: 12.0),
           Row(
@@ -146,7 +146,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             children: [
               Text(
                 '${DataUtils.convertPriceToMoneyString(price: product.price)}원',
-                style: MyTextStyle.productTitle,
+                style: MyTextStyle.bigTitleBold,
               ),
               IconButton(
                 onPressed: () {},

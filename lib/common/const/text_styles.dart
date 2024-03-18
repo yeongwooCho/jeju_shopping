@@ -14,9 +14,17 @@ class MyTextStyle {
     color: basicColor,
   );
 
-  static const productTitle = TextStyle(
+  static const bigTitleBold = TextStyle(
     fontSize: 24.0,
     fontWeight: FontWeight.w600,
+    letterSpacing: letterSpacing,
+    height: height,
+    color: basicColor,
+  );
+
+  static const bigTitleRegular = TextStyle(
+    fontSize: 24.0,
+    fontWeight: FontWeight.w400,
     letterSpacing: letterSpacing,
     height: height,
     color: basicColor,
@@ -25,6 +33,14 @@ class MyTextStyle {
   static const bodyTitleBold = TextStyle(
     fontSize: 20.0,
     fontWeight: FontWeight.w600,
+    letterSpacing: letterSpacing,
+    height: height,
+    color: basicColor,
+  );
+
+  static const bodyTitleRegular = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w400,
     letterSpacing: letterSpacing,
     height: height,
     color: basicColor,
