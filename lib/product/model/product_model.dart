@@ -12,6 +12,7 @@ enum Category {
 }
 
 class ProductModel {
+  final int id;
   final String name;
   final int price;
   final int deliveryPrice;
@@ -19,22 +20,11 @@ class ProductModel {
   final Category category;
 
   ProductModel({
+    required this.id,
     required this.name,
     required this.price,
     required this.deliveryPrice,
     required this.imageUrl,
     required this.category,
   });
-
-  factory ProductModel.fromModel({
-    required ProductModel model,
-  }) {
-    return ProductModel(
-      name: model.name,
-      price: model.price,
-      deliveryPrice: model.deliveryPrice,
-      imageUrl: model.imageUrl,
-      category: model.category,
-    );
-  }
 }

@@ -5,6 +5,7 @@ import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
 import 'package:jeju_shopping/life_style/view/life_style_habit_screen.dart';
+import 'package:jeju_shopping/product/view/product_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/user/view/certification_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
@@ -93,7 +94,13 @@ List<RouteBase> get routes => [
             path: '/product',
             name: ProductScreen.routeName,
             builder: (context, state) => ProductScreen(),
-          ),
+              routes: [
+                GoRoute(
+                  path: ':id',
+                  name: ProductDetailScreen.routeName,
+                  builder: (context, state) => ProductDetailScreen(),
+                ),
+              ]),
           GoRoute(
             // /nested/b
             path: '/cook',
