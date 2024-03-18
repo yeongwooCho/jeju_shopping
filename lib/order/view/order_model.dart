@@ -7,13 +7,15 @@ enum Delivery {
 }
 
 class OrderModel {
-  ProductModel productModel;
-  Delivery deliveryState;
-  int amount;
+  final ProductModel productModel;
+  final Delivery deliveryState;
+  final int amount;
+  final DateTime createdAt;
 
   OrderModel({
     required this.productModel,
     required this.deliveryState,
     required this.amount,
+    required this.createdAt,
   });
 }
