@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,14 +13,21 @@ import 'package:jeju_shopping/product/component/vertical_item_card.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class CartScreen extends ConsumerWidget {
+class CartScreen extends ConsumerStatefulWidget {
   static String get routeName => 'cart';
 
   const CartScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends ConsumerState<CartScreen> {
+  @override
+  Widget build(BuildContext context) {
     final carts = ref.watch(cartProvider);
+    final isAllSelected =
+        carts.firstWhereOrNull((element) => !element.isSelected) == null;
 
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '장바구니'),
@@ -28,73 +36,97 @@ class CartScreen extends ConsumerWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      vertical: 20.0, horizontal: 24.0),
+                    vertical: 20.0,
+                    horizontal: 24.0,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButton(
-                        onPressed: () {},
+                      InkWell(
+                        onTap: () {
+                          ref
+                              .read(cartProvider.notifier)
+                              .updateAllSelected(isSelected: !isAllSelected);
+                        },
                         child: Row(
                           children: [
-                            PhosphorIcon(
-                              PhosphorIcons.circle(PhosphorIconsStyle.bold),
-                              color: MyColor.text,
-                            ),
+                            (isAllSelected)
+                                ? PhosphorIcon(
+                                    PhosphorIcons.checkCircle(
+                                      PhosphorIconsStyle.fill,
+                                    ),
+                                    color: MyColor.primary,
+                                  )
+                                : PhosphorIcon(
+                                    PhosphorIcons.circle(
+                                      PhosphorIconsStyle.bold,
+                                    ),
+                                    color: MyColor.text,
+                                  ),
                             const SizedBox(width: 8.0),
-                      Text(
-                        '전체 선택',
-                        style: MyTextStyle.bodyBold,
+                            const Text(
+                              '전체 선택',
+                              style: MyTextStyle.bodyBold,
+                            ),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: const Text(
+                          '선택 삭제',
+                          style: MyTextStyle.bodyBold,
+                        ),
                       ),
                     ],
                   ),
                 ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    '선택 삭제',
-                    style: MyTextStyle.bodyBold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          DividerContainer(),
+                const DividerContainer(),
                 Expanded(
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
                     itemBuilder: (context, index) {
                       final cart = carts[index];
                       return Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  ref
-                                      .read(cartProvider.notifier)
-                                      .updateSelected(
-                                        id: cart.id,
-                                        isSelected: !cart.isSelected,
-                                      );
-                                },
-                                icon: cart.isSelected
-                                    ? PhosphorIcon(
-                                        PhosphorIcons.checkCircle(
-                                            PhosphorIconsStyle.fill),
-                                        color: MyColor.primary,
-                                      )
-                                    : PhosphorIcon(PhosphorIcons.circle()),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  ref
-                                      .read(cartProvider.notifier)
-                                      .removeProduct(id: cart.id);
-                                },
-                                icon: PhosphorIcon(PhosphorIcons.x()),
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 24.0,
+                              right: 24.0,
+                              bottom: 8.0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    ref
+                                        .read(cartProvider.notifier)
+                                        .updateSelected(
+                                          id: cart.id,
+                                          isSelected: !cart.isSelected,
+                                        );
+                                  },
+                                  child: cart.isSelected
+                                      ? PhosphorIcon(
+                                          PhosphorIcons.checkCircle(
+                                              PhosphorIconsStyle.fill),
+                                          color: MyColor.primary,
+                                        )
+                                      : PhosphorIcon(PhosphorIcons.circle()),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    print(cart.id);
+                                    ref
+                                        .read(cartProvider.notifier)
+                                        .removeProduct(id: cart.id);
+                                  },
+                                  child: PhosphorIcon(PhosphorIcons.x()),
+                                ),
+                              ],
+                            ),
                           ),
                           VerticalItemListCard(
                             product: cart.productModel,
@@ -104,7 +136,10 @@ class CartScreen extends ConsumerWidget {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return const Divider(height: 40.0);
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Divider(height: 40.0),
+                      );
                     },
                     itemCount: carts.length,
                   ),

@@ -1,9 +1,12 @@
 import 'package:badges/badges.dart' as badges;
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidable/hidable.dart';
 import 'package:jeju_shopping/cart/provider/cart_provider.dart';
+import 'package:jeju_shopping/cart/view/cart_screen.dart';
+import 'package:jeju_shopping/common/component/custom_toast.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
@@ -14,6 +17,7 @@ import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
+import 'package:jeju_shopping/product/view/search_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
@@ -48,7 +52,36 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
         preferredWidgetSize:
             Size.fromHeight(DefaultAppBar.defaultAppBarHeight + safeTopPadding),
         controller: scrollController,
-        child: const DefaultAppBar(title: ''),
+        child: DefaultAppBar(
+          title: '',
+          action: [
+            IconButton(
+              onPressed: () {
+                context.pushNamed(CartScreen.routeName);
+              },
+              iconSize: 30.0,
+              icon: badges.Badge(
+                showBadge: carts.isNotEmpty,
+                badgeContent: Text(
+                  carts.length.toString(),
+                  style: MyTextStyle.minimumRegular.copyWith(
+                    color: MyColor.white,
+                    height: 1.0,
+                  ),
+                ),
+                child: PhosphorIcon(PhosphorIcons.shoppingCart()),
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                context.pushNamed(SearchScreen.routeName);
+              },
+              iconSize: 30.0,
+              icon: PhosphorIcon(PhosphorIcons.magnifyingGlass()),
+            ),
+            const SizedBox(width: 8.0),
+          ],
+        ),
       ),
       bottomNavigationBar: Hidable(
         controller: scrollController,
@@ -59,9 +92,18 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             children: [
               InkWell(
                 onTap: () {
-                  ref
-                      .read(cartProvider.notifier)
-                      .addProduct(product: product, amount: 1);
+                  final isNotExistProduct = carts.firstWhereOrNull(
+                        (e) => e.productModel.id == productId,
+                      ) ==
+                      null;
+
+                  if (isNotExistProduct) {
+                    ref
+                        .read(cartProvider.notifier)
+                        .addProduct(product: product, amount: 1);
+                  } else {
+                    showCustomToast(context, msg: '이미 등록된 상품입니다.');
+                  }
                 },
                 child: Container(
                   decoration: BoxDecoration(

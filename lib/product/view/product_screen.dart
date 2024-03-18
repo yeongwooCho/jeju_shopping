@@ -38,21 +38,17 @@ class ProductScreen extends ConsumerWidget {
             onPressed: () {
               context.pushNamed(CartScreen.routeName);
             },
-            icon: PhosphorIcon(
-              PhosphorIcons.shoppingCart(),
-              size: 32.0,
-            ),
+            iconSize: 30.0,
+            icon: PhosphorIcon(PhosphorIcons.shoppingCart()),
           ),
           IconButton(
             onPressed: () {
               context.pushNamed(SearchScreen.routeName);
             },
-            icon: PhosphorIcon(
-              PhosphorIcons.magnifyingGlass(),
-              size: 32.0,
-            ),
+            iconSize: 30.0,
+            icon: PhosphorIcon(PhosphorIcons.magnifyingGlass()),
           ),
-          const SizedBox(width: 16.0),
+          const SizedBox(width: 8.0),
         ],
       ),
       child: CustomScrollView(
