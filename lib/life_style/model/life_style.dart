@@ -2,30 +2,30 @@ class LifeStyleModel {
   final String eating;
   final String taste;
   final String place;
-  final String exercise;
   final String sleep;
+  final String exercise;
 
   LifeStyleModel({
     this.eating = '',
     this.taste = '',
     this.place = '',
-    this.exercise = '',
     this.sleep = '',
+    this.exercise = '',
   });
 
   LifeStyleModel copyWith({
     String? eating,
     String? taste,
     String? place,
-    String? exercise,
     String? sleep,
+    String? exercise,
   }) {
     return LifeStyleModel(
       eating: eating ?? this.eating,
       taste: taste ?? this.taste,
       place: place ?? this.place,
-      exercise: exercise ?? this.exercise,
       sleep: sleep ?? this.sleep,
+      exercise: exercise ?? this.exercise,
     );
   }
 }

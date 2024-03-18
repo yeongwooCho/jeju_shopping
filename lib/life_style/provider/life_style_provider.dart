@@ -7,7 +7,18 @@ final lifeStyleProvider =
 );
 
 class LifeStyleStateNotifier extends StateNotifier<LifeStyleModel> {
-  LifeStyleStateNotifier() : super(LifeStyleModel());
+  LifeStyleStateNotifier()
+      : super(LifeStyleModel(
+          eating: '육류',
+          taste: '짠 맛',
+          place: '실내',
+          exercise: '안함',
+          sleep: '보통',
+        ));
+
+  void clear() {
+    state = LifeStyleModel();
+  }
 
   void setEating({required String eating}) {
     state = state.copyWith(eating: eating);
