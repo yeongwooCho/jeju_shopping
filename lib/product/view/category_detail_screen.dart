@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/utils/data_utils.dart';
+import 'package:jeju_shopping/product/component/vertical_item_grid.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -14,14 +16,14 @@ class CategoryDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final categoryId = GoRouterState.of(context).pathParameters;
-    print(categoryId);
+    final categoryId = GoRouterState.of(context).pathParameters['id'];
+    final category = DataUtils.getCategoryTitle(index: categoryId!);
 
     final products = ref.read(productProvider);
 
     return DefaultLayout(
       appbar: DefaultAppBar(
-        title: categoryId.toString(),
+        title: category,
         leading: IconButton(
           onPressed: () {
             context.goNamed(ProductScreen.routeName);
@@ -31,17 +33,7 @@ class CategoryDetailScreen extends ConsumerWidget {
           ),
         ),
       ),
-      child: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              context.pop();
-            },
-            child: Text('dfsa'),
-          ),
-          Text('afsd'),
-        ],
-      ),
-    ); //VerticalItemList(products: products);
+      child: VerticalItemList(products: products),
+    );
   }
 }
