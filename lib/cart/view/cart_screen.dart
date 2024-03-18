@@ -72,7 +72,11 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          ref
+                              .read(cartProvider.notifier)
+                              .removeAllSelectedProduct();
+                        },
                         child: const Text(
                           '선택 삭제',
                           style: MyTextStyle.bodyBold,
@@ -86,7 +90,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    itemBuilder: (context, index) {
+                    itemBuilder: (_, index) {
                       final cart = carts[index];
                       return Column(
                         children: [
@@ -104,7 +108,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                                     ref
                                         .read(cartProvider.notifier)
                                         .updateSelected(
-                                          id: cart.id,
+                                          cartId: cart.id,
                                           isSelected: !cart.isSelected,
                                         );
                                   },
@@ -131,6 +135,21 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                           VerticalItemListCard(
                             product: cart.productModel,
                             amount: cart.amount,
+                            amountUpdateButton: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                color: MyColor.primary,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Text(
+                                    '갯수 변경',
+                                    style: MyTextStyle.minimumRegular.copyWith(
+                                      color: MyColor.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       );

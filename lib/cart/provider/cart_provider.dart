@@ -30,12 +30,12 @@ class CartStateNotifier extends StateNotifier<List<CartModel>> {
   }
 
   void updateSelected({
-    required String id,
+    required String cartId,
     required bool isSelected,
   }) {
     state = state.map<CartModel>((e) {
-      if (e.id == id) {
-        e.copyWith(isSelected: isSelected);
+      if (e.id == cartId) {
+        return e.copyWith(isSelected: isSelected);
       }
       return e;
     }).toList();
@@ -53,5 +53,9 @@ class CartStateNotifier extends StateNotifier<List<CartModel>> {
     required String id,
   }) {
     state = state.where((element) => element.id != id).toList();
+  }
+
+  void removeAllSelectedProduct() {
+    state = state.where((element) => !element.isSelected).toList();
   }
 }
