@@ -16,8 +16,7 @@ class MyButtonStyle {
       borderRadius: BorderRadius.circular(8.0),
     ),
     textStyle: MyTextStyle.bodyBold.copyWith(
-      color: MyColor.white,
-    ),
+      color: MyColor.white, height: 1.0),
   );
 
   static ButtonStyle secondary = ElevatedButton.styleFrom(
@@ -37,6 +36,7 @@ class MyButtonStyle {
     ),
     textStyle: MyTextStyle.bodyRegular.copyWith(
       color: MyColor.primary,
+      height: 1.0,
     ),
   );
 
@@ -53,7 +53,9 @@ class MyButtonStyle {
       ),
       borderRadius: BorderRadius.circular(8.0),
     ),
-    textStyle: MyTextStyle.bodyRegular,
+    textStyle: MyTextStyle.bodyRegular.copyWith(
+      height: 1.0,
+    ),
     alignment: AlignmentDirectional.centerStart,
   );
 }
