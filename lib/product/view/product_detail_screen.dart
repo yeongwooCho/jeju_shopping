@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hidable/hidable.dart';
+import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
@@ -11,13 +13,21 @@ import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class ProductDetailScreen extends ConsumerWidget {
+class ProductDetailScreen extends ConsumerStatefulWidget {
   static String get routeName => 'product_detail';
 
   const ProductDetailScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProductDetailScreen> createState() =>
+      _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  Widget build(BuildContext context) {
     final productId = GoRouterState.of(context).pathParameters['id'];
 
     final product = ref
@@ -25,10 +35,53 @@ class ProductDetailScreen extends ConsumerWidget {
         .firstWhere((element) => element.id == productId);
 
     final fullWidth = MediaQuery.of(context).size.width;
+    final safeTopPadding = MediaQuery.of(context).padding.top;
+    final safeBottomPadding = MediaQuery.of(context).padding.bottom;
 
     return DefaultLayout(
-      appbar: const DefaultAppBar(title: ''),
+      appbar: Hidable(
+        preferredWidgetSize:
+            Size.fromHeight(DefaultAppBar.defaultAppBarHeight + safeTopPadding),
+        controller: scrollController,
+        child: const DefaultAppBar(title: ''),
+      ),
+      bottomNavigationBar: Hidable(
+        controller: scrollController,
+        preferredWidgetSize: const Size.fromHeight(68),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
+          child: Row(
+            children: [
+              InkWell(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1.0,
+                      color: MyColor.middleGrey,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: PhosphorIcon(
+                      PhosphorIcons.shoppingCart(),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12.0),
+              Expanded(
+                child: PrimaryButton(
+                  onPressed: () {},
+                  child: Text('결제하기'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       child: SingleChildScrollView(
+        controller: scrollController,
         physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

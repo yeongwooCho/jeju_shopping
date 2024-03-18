@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
+import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class RootTab extends StatelessWidget {
@@ -29,8 +30,7 @@ class RootTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: child,
+    return DefaultLayout(
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0.0,
         backgroundColor: MyColor.white,
@@ -73,6 +73,7 @@ class RootTab extends StatelessWidget {
           ),
         ],
       ),
+      child: child,
     );
   }
 }
