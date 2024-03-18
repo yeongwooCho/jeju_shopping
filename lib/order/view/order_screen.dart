@@ -23,7 +23,10 @@ class OrderScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final orders = ref.watch(orderProvider);
+    final orders = ref
+        .watch(orderProvider)
+        .where((e) => e.deliveryState == DeliveryState.no)
+        .toList();
     final totalPrice =
         orders.fold(0, (pre, e) => pre + e.productModel.price * e.amount);
 

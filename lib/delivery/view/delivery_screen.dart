@@ -87,27 +87,31 @@ class DeliveryListView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         elements: orders,
         groupBy: (element) => element.createdAt.toString().split(' ').first,
-        groupSeparatorBuilder: (String groupByValue) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const DividerContainer(),
-              const SizedBox(height: 16.0),
-              Text(
-                groupByValue,
-                style: MyTextStyle.bigTitleRegular,
-                textAlign: TextAlign.start,
+        groupSeparatorBuilder: (String groupByValue) => Column(
+          children: [
+            const DividerContainer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 16.0),
+                  Text(
+                    groupByValue,
+                    style: MyTextStyle.bigTitleRegular,
+                    textAlign: TextAlign.start,
+                  ),
+                  const SizedBox(height: 16.0),
+                  const Divider(height: 1.0),
+                ],
               ),
-              const SizedBox(height: 16.0),
-              const Divider(height: 1.0),
-            ],
-          ),
+            ),
+          ],
         ),
         itemBuilder: (context, OrderModel element) => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.only(left: 24.0, bottom: 8.0),
               child: Text(
@@ -119,13 +123,13 @@ class DeliveryListView extends StatelessWidget {
               product: element.productModel,
               amount: element.amount,
             ),
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 16.0),
           ],
         ),
         itemComparator: (item1, item2) => item1.createdAt.compareTo(
           item2.createdAt,
         ),
-        order: GroupedListOrder.ASC,
+        order: GroupedListOrder.DESC,
       ),
     );
   }
