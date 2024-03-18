@@ -11,6 +11,19 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
     state = getItems();
   }
 
+  void updateLike({
+    required String productId,
+    required bool isLike,
+  }) {
+    state = state.map((element) {
+      if (element.id == productId) {
+        return element.copyWith(isLike: isLike);
+      } else {
+        return element;
+      }
+    }).toList();
+  }
+
   List<ProductModel> getItems() {
     return [
       ProductModel(
@@ -20,6 +33,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '1',
@@ -28,6 +42,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '2',
@@ -36,6 +51,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '3',
@@ -44,6 +60,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '4',
@@ -52,6 +69,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '5',
@@ -60,6 +78,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '6',
@@ -68,6 +87,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '7',
@@ -76,6 +96,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '8',
@@ -84,6 +105,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '9',
@@ -92,6 +114,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
       ProductModel(
         id: '10',
@@ -100,6 +123,7 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
         deliveryPrice: 3000,
         imageUrl: 'asset/img/product/product_1.jpg',
         category: Category.special,
+        isLike: false,
       ),
     ];
   }

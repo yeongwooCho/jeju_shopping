@@ -90,8 +90,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
           child: Row(
             children: [
-              InkWell(
-                onTap: () {
+              SecondaryButton(
+                onPressed: () {
                   final isNotExistProduct = carts.firstWhereOrNull(
                         (e) => e.productModel.id == productId,
                       ) ==
@@ -105,31 +105,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                     showCustomToast(context, msg: '이미 등록된 상품입니다.');
                   }
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1.0,
-                      color: MyColor.middleGrey,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: badges.Badge(
-                      showBadge: carts.isNotEmpty,
-                      badgeContent: Text(
-                        carts.length.toString(),
-                        style: MyTextStyle.minimumRegular.copyWith(
-                          color: MyColor.white,
-                          height: 1.0,
-                        ),
-                      ),
-                      child: PhosphorIcon(
-                        PhosphorIcons.shoppingCart(),
-                      ),
-                    ),
-                  ),
-                ),
+                child: const Text('장바구니에 담기'),
               ),
               const SizedBox(width: 12.0),
               Expanded(
@@ -140,7 +116,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       pathParameters: {"id": product.id},
                     );
                   },
-                  child: const Text('결제하기'),
+                  child: const Text('바로 결제하기'),
                 ),
               ),
             ],
@@ -210,9 +186,20 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                 style: MyTextStyle.bigTitleBold,
               ),
               IconButton(
-                onPressed: () {},
-                icon: PhosphorIcon(
-                  PhosphorIcons.heart(),
+                onPressed: () {
+                  ref.read(productProvider.notifier).updateLike(
+                        productId: product.id,
+                        isLike: !product.isLike,
+                      );
+                },
+                icon: product.isLike
+                    ? PhosphorIcon(
+                        PhosphorIcons.heart(PhosphorIconsStyle.fill),
+                        color: MyColor.error,
+                        size: 32.0,
+                      )
+                    : PhosphorIcon(
+                        PhosphorIcons.heart(),
                   color: MyColor.middleGrey,
                   size: 32.0,
                 ),
