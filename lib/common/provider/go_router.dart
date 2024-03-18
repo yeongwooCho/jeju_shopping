@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/cart/view/cart_screen.dart';
 import 'package:jeju_shopping/common/view/completion_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
+import 'package:jeju_shopping/delivery/view/delivery_screen.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
 import 'package:jeju_shopping/life_style/view/life_style_habit_screen.dart';
 import 'package:jeju_shopping/product/view/category_detail_screen.dart';
@@ -86,6 +88,12 @@ List<RouteBase> get routes => [
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
+        path: '/cart',
+        name: CartScreen.routeName,
+        builder: (context, state) => CartScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/search',
         name: SearchScreen.routeName,
         builder: (context, state) => SearchScreen(),
@@ -149,6 +157,13 @@ List<RouteBase> get routes => [
             path: '/profile',
             name: ProfileScreen.routeName,
             builder: (context, state) => ProfileScreen(),
+            routes: [
+              GoRoute(
+                path: '/delivery',
+                name: DeliveryScreen.routeName,
+                builder: (context, state) => DeliveryScreen(),
+              ),
+            ],
           ),
         ],
       ),
