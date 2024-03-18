@@ -1,6 +1,7 @@
 import 'package:jeju_shopping/product/model/product_model.dart';
 
-enum Delivery {
+enum DeliveryState {
+  no,
   ready,
   doing,
   done,
@@ -9,7 +10,7 @@ enum Delivery {
 class OrderModel {
   final ProductModel productModel;
   final int amount;
-  final Delivery deliveryState;
+  final DeliveryState deliveryState;
   final DateTime createdAt;
 
   OrderModel({

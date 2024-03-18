@@ -150,7 +150,7 @@ List<RouteBase> get routes => [
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
-        path: '/order/:id',
+        path: '/order',
         name: OrderScreen.routeName,
         builder: (context, state) => OrderScreen(),
       ),

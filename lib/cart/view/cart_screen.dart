@@ -11,6 +11,8 @@ import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/order/provider/order_provider.dart';
+import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:jeju_shopping/product/component/vertical_item_card.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -44,7 +46,12 @@ class _CartScreenState extends ConsumerState<CartScreen> {
             children: [
               Expanded(
                 child: PrimaryButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref
+                        .read(orderProvider.notifier)
+                        .addProductsFromCarts(carts: carts);
+                    context.goNamed(OrderScreen.routeName);
+                  },
                   child: const Text('선택한 상품 결제하기'),
                 ),
               ),

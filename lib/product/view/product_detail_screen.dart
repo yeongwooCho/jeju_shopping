@@ -14,6 +14,7 @@ import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
+import 'package:jeju_shopping/order/provider/order_provider.dart';
 import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
@@ -111,10 +112,10 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               Expanded(
                 child: PrimaryButton(
                   onPressed: () {
-                    context.pushNamed(
-                      OrderScreen.routeName,
-                      pathParameters: {"id": product.id},
-                    );
+                    context.pushNamed(OrderScreen.routeName);
+                    ref
+                        .read(orderProvider.notifier)
+                        .addProductRightNow(productModel: product, amount: 1);
                   },
                   child: const Text('바로 결제하기'),
                 ),

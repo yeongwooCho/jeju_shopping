@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
@@ -7,16 +8,24 @@ import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
+import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/common/view/completion_screen.dart';
+import 'package:jeju_shopping/order/model/order_model.dart';
+import 'package:jeju_shopping/order/provider/order_provider.dart';
+import 'package:jeju_shopping/product/component/vertical_item_card.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends ConsumerWidget {
   static String get routeName => 'order';
 
   const OrderScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final orders = ref.watch(orderProvider);
+    final totalPrice =
+        orders.fold(0, (pre, e) => pre + e.productModel.price * e.amount);
+
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '주문서 작성'),
       child: SingleChildScrollView(
@@ -25,12 +34,12 @@ class OrderScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             renderAddress(),
-            DividerContainer(),
-            renderProductInfo(),
-            DividerContainer(),
+            const DividerContainer(),
+            _ProductInfo(orders: orders),
+            const DividerContainer(),
             renderPaymentWidget(),
-            DividerContainer(),
-            renderPaymentInfoWidget(),
+            const DividerContainer(),
+            renderPaymentInfoWidget(totalPrice: totalPrice),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: PrimaryButton(
@@ -89,25 +98,6 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget renderProductInfo() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            '상품 정보',
-            style: MyTextStyle.bigTitleBold,
-          ),
-          const SizedBox(height: 16.0),
-          Text('fsad'),
-          Text('fsad'),
-          Text('fsad'),
-        ],
-      ),
-    );
-  }
-
   Widget renderPaymentWidget() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 24.0),
@@ -125,7 +115,9 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget renderPaymentInfoWidget() {
+  Widget renderPaymentInfoWidget({
+    required int totalPrice,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 24.0),
       child: Column(
@@ -136,43 +128,61 @@ class OrderScreen extends StatelessWidget {
             style: MyTextStyle.bigTitleBold,
           ),
           const SizedBox(height: 16.0),
-          renderTitleAndDescription(
-              title: '상품 금액', description: 'description', isImportant: false),
-          const SizedBox(height: 4.0),
-          renderTitleAndDescription(
-              title: '수량', description: 'description', isImportant: false),
-          const SizedBox(height: 4.0),
-          renderTitleAndDescription(
-              title: '배송비', description: 'description', isImportant: false),
-          const SizedBox(height: 4.0),
-          renderTitleAndDescription(
-              title: '최종 결제 금액', description: 'description', isImportant: true),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                '최종 결제 금액',
+                style: MyTextStyle.bodyBold,
+              ),
+              Text(
+                '${DataUtils.convertPriceToMoneyString(price: totalPrice)}원',
+                style: MyTextStyle.bodyBold,
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
+}
 
-  Widget renderTitleAndDescription({
-    required String title,
-    required String description,
-    required bool isImportant,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: isImportant
-              ? MyTextStyle.bodyBold
-              : MyTextStyle.descriptionRegular,
-        ),
-        Text(
-          description,
-          style: isImportant
-              ? MyTextStyle.bodyBold
-              : MyTextStyle.descriptionRegular,
-        ),
-      ],
+class _ProductInfo extends StatelessWidget {
+  final List<OrderModel> orders;
+
+  const _ProductInfo({
+    super.key,
+    required this.orders,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 40.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Text(
+              '상품 정보',
+              style: MyTextStyle.bigTitleBold,
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          ...orders
+              .map(
+                (cart) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: VerticalItemListCard(
+                    product: cart.productModel,
+                    amount: cart.amount,
+                  ),
+                ),
+              )
+              .toList()
+        ],
+      ),
     );
   }
 }
@@ -195,7 +205,7 @@ class _TossWidget extends StatelessWidget {
         Badge(
           alignment: Alignment.topLeft,
           largeSize: 32.0,
-          offset: Offset(-4, -8),
+          offset: const Offset(-4, -8),
           backgroundColor: MyColor.error,
           textStyle: MyTextStyle.descriptionBold.copyWith(
             color: MyColor.white,
@@ -259,7 +269,7 @@ class _TossWidget extends StatelessWidget {
             const SizedBox(width: 8.0),
             renderBoxButton(
               itemWidth: itemWidth,
-              image: Text(
+              image: const Text(
                 '가상계좌',
                 style: MyTextStyle.descriptionMedium,
               ),
