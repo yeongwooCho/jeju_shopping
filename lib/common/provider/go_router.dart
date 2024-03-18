@@ -5,6 +5,7 @@ import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
 import 'package:jeju_shopping/life_style/view/life_style_habit_screen.dart';
+import 'package:jeju_shopping/product/view/category_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/user/view/certification_screen.dart';
@@ -70,6 +71,11 @@ List<RouteBase> get routes => [
           ),
         ],
       ),
+      GoRoute(
+        path: '/category/:id',
+        name: CategoryDetailScreen.routeName,
+        builder: (context, state) => CategoryDetailScreen(),
+      ),
 
       GoRoute(
         path: '/eating',
@@ -91,7 +97,7 @@ List<RouteBase> get routes => [
         routes: [
           GoRoute(
             // /nested/a
-            path: '/product',
+            path: '/nested/product',
             name: ProductScreen.routeName,
             builder: (context, state) => ProductScreen(),
               routes: [
@@ -103,30 +109,16 @@ List<RouteBase> get routes => [
               ]),
           GoRoute(
             // /nested/b
-            path: '/cook',
+            path: '/nested/cook',
             name: CookScreen.routeName,
             builder: (context, state) => CookScreen(),
           ),
           GoRoute(
             // /nested/c
-            path: '/my_page',
+            path: '/nested/my_page',
             name: MyPageScreen.routeName,
             builder: (context, state) => MyPageScreen(),
           ),
         ],
       ),
-      // GoRoute(
-      //   path: '/',
-      //   name: RootTab.routeName,
-      //   builder: (context, state) => RootTab(),
-      //   routes: [
-      //     GoRoute(
-      //       path: 'restaurant/:rid',
-      //       name: RestaurantDetailScreen.routeName,
-      //       builder: (_, state) => RestaurantDetailScreen(
-      //         id: state.pathParameters['rid']!,
-      //       ),
-      //     ),
-      //   ],
-      // ),
     ];

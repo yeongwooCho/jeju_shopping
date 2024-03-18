@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/divider_container.dart';
 import 'package:jeju_shopping/common/component/see_more_button.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
@@ -9,6 +10,7 @@ import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/product/component/horizontal_item_list.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
+import 'package:jeju_shopping/product/view/category_detail_screen.dart';
 
 class ProductScreen extends ConsumerWidget {
   static String get routeName => "product";
@@ -89,32 +91,42 @@ class ProductScreen extends ConsumerWidget {
             ),
             itemCount: 6,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: 48.0,
-                      decoration: BoxDecoration(
-                        color: MyColor.lightGrey,
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Image.asset(
-                          'asset/img/category/category_$index.png',
-                          fit: BoxFit.contain,
+              return GestureDetector(
+                onTap: () {
+                  context.goNamed(
+                    CategoryDetailScreen.routeName,
+                    pathParameters: {
+                      'id': index.toString(),
+                    },
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 48.0,
+                        decoration: BoxDecoration(
+                          color: MyColor.lightGrey,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Image.asset(
+                            'asset/img/category/category_$index.png',
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 4.0),
-                    Text(
-                      getCategoryTitle(index: index),
-                      style: MyTextStyle.descriptionRegular.copyWith(
-                        color: MyColor.darkGrey,
+                      const SizedBox(height: 4.0),
+                      Text(
+                        getCategoryTitle(index: index),
+                        style: MyTextStyle.descriptionRegular.copyWith(
+                          color: MyColor.darkGrey,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
