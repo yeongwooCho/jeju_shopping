@@ -1,10 +1,14 @@
 import 'package:jeju_shopping/product/model/product_model.dart';
 
 enum DeliveryState {
-  no,
-  ready,
-  doing,
-  done,
+  no('주문중'),
+  ready('준비중'),
+  doing('배송중'),
+  done('배송완료');
+
+  const DeliveryState(this.label);
+
+  final String label;
 }
 
 class OrderModel {

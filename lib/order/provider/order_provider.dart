@@ -24,12 +24,13 @@ class OrderStateNotifier extends StateNotifier<List<OrderModel>> {
     required ProductModel productModel,
     required int amount,
   }) {
+    final now = DateTime.now();
     state = [
       OrderModel(
         productModel: productModel,
         amount: amount,
         deliveryState: DeliveryState.no,
-        createdAt: DateTime.now(),
+        createdAt: DateTime(now.year, now.month, now.day),
       ),
     ];
   }
@@ -37,13 +38,14 @@ class OrderStateNotifier extends StateNotifier<List<OrderModel>> {
   void addProductsFromCarts({
     required List<CartModel> carts,
   }) {
+    final now = DateTime.now();
     state = [
       ...carts
           .map((e) => OrderModel(
                 productModel: e.productModel,
                 amount: e.amount,
                 deliveryState: DeliveryState.no,
-                createdAt: DateTime.now(),
+                createdAt: DateTime(now.year, now.month, now.day),
               ))
           .toList()
     ];
