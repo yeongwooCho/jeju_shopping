@@ -45,6 +45,7 @@ dependencies:
   # Utility
   skeletons: ^0.0.3 # loading
   phosphor_flutter: ^2.0.1 # icon
+  hidable: ^1.0.6 # scroll animation hider
 
   # Statement Manager
   go_router: ^7.0.1
