@@ -8,10 +8,12 @@ import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
+import 'package:jeju_shopping/common/view/search_screen.dart';
 import 'package:jeju_shopping/product/component/horizontal_item_list.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
 import 'package:jeju_shopping/product/view/category_detail_screen.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ProductScreen extends ConsumerWidget {
   static String get routeName => "product";
@@ -23,7 +25,33 @@ class ProductScreen extends ConsumerWidget {
     final state = ref.watch(productProvider);
 
     return DefaultLayout(
-      appbar: const DefaultAppBar(title: '홈'),
+      appbar: DefaultAppBar(
+        title: '',
+        titleWidget: Image.asset(
+          'asset/img/logo/name.png',
+          height: 24.0,
+        ),
+        centerTitle: false,
+        action: [
+          IconButton(
+            onPressed: () {},
+            icon: PhosphorIcon(
+              PhosphorIcons.shoppingCart(),
+              size: 32.0,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              context.pushNamed(SearchScreen.routeName);
+            },
+            icon: PhosphorIcon(
+              PhosphorIcons.magnifyingGlass(),
+              size: 32.0,
+            ),
+          ),
+          const SizedBox(width: 16.0),
+        ],
+      ),
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
