@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/view/completion_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
-import 'package:jeju_shopping/common/view/search_screen.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
@@ -12,6 +11,8 @@ import 'package:jeju_shopping/product/view/category_detail_screen.dart';
 import 'package:jeju_shopping/product/view/order_screen.dart';
 import 'package:jeju_shopping/product/view/product_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
+import 'package:jeju_shopping/product/view/search_detail_screen.dart';
+import 'package:jeju_shopping/product/view/search_screen.dart';
 import 'package:jeju_shopping/user/view/certification_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
 import 'package:jeju_shopping/user/view/input_info_screen.dart';
@@ -88,6 +89,14 @@ List<RouteBase> get routes => [
         path: '/search',
         name: SearchScreen.routeName,
         builder: (context, state) => SearchScreen(),
+        routes: [
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: 'detail',
+            name: SearchDetailScreen.routeName,
+            builder: (context, state) => SearchDetailScreen(),
+          )
+        ],
       ),
       GoRoute(
         path: '/eating',
