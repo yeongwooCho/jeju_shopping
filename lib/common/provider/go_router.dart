@@ -10,7 +10,7 @@ import 'package:jeju_shopping/delivery/view/delivery_screen.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
 import 'package:jeju_shopping/life_style/view/life_style_habit_screen.dart';
 import 'package:jeju_shopping/product/view/category_detail_screen.dart';
-import 'package:jeju_shopping/product/view/order_screen.dart';
+import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:jeju_shopping/product/view/product_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/product/view/search_detail_screen.dart';

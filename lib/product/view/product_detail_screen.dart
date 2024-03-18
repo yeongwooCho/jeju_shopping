@@ -11,7 +11,7 @@ import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
-import 'package:jeju_shopping/product/view/order_screen.dart';
+import 'package:jeju_shopping/order/view/order_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
-import 'package:jeju_shopping/order/view/order_model.dart';
+import 'package:jeju_shopping/order/model/order_model.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
 
 class VerticalItemListCard extends ConsumerWidget {
