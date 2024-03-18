@@ -6,8 +6,6 @@ import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/product/component/vertical_item_grid.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
-import 'package:jeju_shopping/product/view/product_screen.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class CategoryDetailScreen extends ConsumerWidget {
   static String get routeName => 'category';
@@ -22,17 +20,7 @@ class CategoryDetailScreen extends ConsumerWidget {
     final products = ref.read(productProvider);
 
     return DefaultLayout(
-      appbar: DefaultAppBar(
-        title: category,
-        leading: IconButton(
-          onPressed: () {
-            context.goNamed(ProductScreen.routeName);
-          },
-          icon: PhosphorIcon(
-            PhosphorIcons.caretLeft(),
-          ),
-        ),
-      ),
+      appbar: DefaultAppBar(title: category),
       child: VerticalItemList(products: products),
     );
   }

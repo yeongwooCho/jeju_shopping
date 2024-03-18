@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
@@ -16,7 +17,11 @@ import 'package:jeju_shopping/user/view/my_page_screen.dart';
 import 'package:jeju_shopping/user/view/term_detail_screen.dart';
 import 'package:jeju_shopping/user/view/term_screen.dart';
 
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
 final router = GoRouter(
+  navigatorKey: _rootNavigatorKey,
   redirect: null,
   initialLocation: '/splash',
   routes: routes,
@@ -72,12 +77,6 @@ List<RouteBase> get routes => [
         ],
       ),
       GoRoute(
-        path: '/category/:id',
-        name: CategoryDetailScreen.routeName,
-        builder: (context, state) => CategoryDetailScreen(),
-      ),
-
-      GoRoute(
         path: '/eating',
         name: EatingHabitScreen.routeName,
         builder: (context, state) => EatingHabitScreen(),
@@ -89,8 +88,8 @@ List<RouteBase> get routes => [
           )
         ],
       ),
-
       ShellRoute(
+        navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
           return RootTab(child: child);
         },
@@ -102,6 +101,13 @@ List<RouteBase> get routes => [
             builder: (context, state) => ProductScreen(),
               routes: [
                 GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'category/:id',
+                  name: CategoryDetailScreen.routeName,
+                  builder: (context, state) => CategoryDetailScreen(),
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
                   path: ':id',
                   name: ProductDetailScreen.routeName,
                   builder: (context, state) => ProductDetailScreen(),

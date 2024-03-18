@@ -15,12 +15,15 @@ class RootTab extends StatelessWidget {
   });
 
   int getIndex(BuildContext context) {
-    if (GoRouterState.of(context).location == '/nested/product') {
-      return 0;
-    } else if (GoRouterState.of(context).location == '/nested/cook') {
-      return 1;
-    } else {
-      return 2;
+    switch (GoRouterState.of(context).location) {
+      case '/product':
+        return 0;
+      case '/cook':
+        return 1;
+      case '/my_page':
+        return 2;
+      default:
+        return 0;
     }
   }
 
@@ -39,11 +42,11 @@ class RootTab extends StatelessWidget {
         currentIndex: getIndex(context),
         onTap: (int index) {
           if (index == 0) {
-            context.go('/nested/product');
+            context.go('/product');
           } else if (index == 1) {
-            context.go('/nested/cook');
+            context.go('/cook');
           } else {
-            context.go('/nested/my_page');
+            context.go('/my_page');
           }
         },
         items: [
