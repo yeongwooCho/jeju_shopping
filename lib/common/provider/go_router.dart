@@ -15,7 +15,7 @@ import 'package:jeju_shopping/user/view/certification_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
 import 'package:jeju_shopping/user/view/input_info_screen.dart';
 import 'package:jeju_shopping/user/view/login_screen.dart';
-import 'package:jeju_shopping/user/view/my_page_screen.dart';
+import 'package:jeju_shopping/user/view/profile_screen.dart';
 import 'package:jeju_shopping/user/view/term_detail_screen.dart';
 import 'package:jeju_shopping/user/view/term_screen.dart';
 
@@ -130,9 +130,9 @@ List<RouteBase> get routes => [
             builder: (context, state) => CookScreen(),
           ),
           GoRoute(
-            path: '/my_page',
-            name: MyPageScreen.routeName,
-            builder: (context, state) => MyPageScreen(),
+            path: '/profile',
+            name: ProfileScreen.routeName,
+            builder: (context, state) => ProfileScreen(),
           ),
         ],
       ),

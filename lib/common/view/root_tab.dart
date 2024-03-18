@@ -19,7 +19,7 @@ class RootTab extends StatelessWidget {
         return 0;
       case '/cook':
         return 1;
-      case '/my_page':
+      case '/profile':
         return 2;
       default:
         return 0;
@@ -44,7 +44,7 @@ class RootTab extends StatelessWidget {
           } else if (index == 1) {
             context.go('/cook');
           } else {
-            context.go('/my_page');
+            context.go('/profile');
           }
         },
         items: [
@@ -67,7 +67,7 @@ class RootTab extends StatelessWidget {
               PhosphorIcons.user(),
               size: 30.0,
             ),
-            label: '내정보',
+            label: '내 정보',
           ),
         ],
       ),
