@@ -16,6 +16,7 @@ import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
 import 'package:jeju_shopping/product/view/category_detail_screen.dart';
 import 'package:jeju_shopping/product/view/search_screen.dart';
+import 'package:jeju_shopping/product/view/see_more_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ProductScreen extends ConsumerWidget {
@@ -88,16 +89,19 @@ class ProductScreen extends ConsumerWidget {
           const SliverToBoxAdapter(child: DividerContainer()),
           const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
           renderProducts(
+            context: context,
             title: ProductPreferState.fresh.label,
             products: freshProducts,
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
           renderProducts(
+            context: context,
             title: ProductPreferState.best.label,
             products: bestProducts,
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
           renderProducts(
+            context: context,
             title: ProductPreferState.prefer.label,
             products: preferProducts,
           ),
@@ -108,6 +112,7 @@ class ProductScreen extends ConsumerWidget {
   }
 
   SliverToBoxAdapter renderProducts({
+    required BuildContext context,
     required String title,
     required List<ProductModel> products,
   }) {
@@ -119,6 +124,7 @@ class ProductScreen extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
@@ -126,7 +132,30 @@ class ProductScreen extends ConsumerWidget {
                 ),
                 SeeMoreButton(
                   title: '더보기',
-                  onTap: () {},
+                  onTap: () {
+                    if (title == ProductPreferState.fresh.label) {
+                      context.goNamed(
+                        SeeMoreScreen.routeName,
+                        pathParameters: {
+                          'title': 'fresh',
+                        },
+                      );
+                    } else if (title == ProductPreferState.best.label) {
+                      context.goNamed(
+                        SeeMoreScreen.routeName,
+                        pathParameters: {
+                          'title': 'best',
+                        },
+                      );
+                    } else {
+                      context.goNamed(
+                        SeeMoreScreen.routeName,
+                        pathParameters: {
+                          'title': 'prefer',
+                        },
+                      );
+                    }
+                  },
                 ),
               ],
             ),

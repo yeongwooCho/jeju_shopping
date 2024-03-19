@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/cart/view/cart_screen.dart';
-import 'package:jeju_shopping/common/view/custom_sns_screen.dart';
 import 'package:jeju_shopping/common/view/completion_screen.dart';
+import 'package:jeju_shopping/common/view/custom_sns_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
@@ -17,6 +17,7 @@ import 'package:jeju_shopping/product/view/product_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/product/view/search_detail_screen.dart';
 import 'package:jeju_shopping/product/view/search_screen.dart';
+import 'package:jeju_shopping/product/view/see_more_screen.dart';
 import 'package:jeju_shopping/user/view/certification_screen.dart';
 import 'package:jeju_shopping/user/view/email_login_screen.dart';
 import 'package:jeju_shopping/user/view/input_info_screen.dart';
@@ -121,6 +122,12 @@ List<RouteBase> get routes => [
                   path: 'category/:id',
                   name: CategoryDetailScreen.routeName,
                   builder: (context, state) => CategoryDetailScreen(),
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'detail/:title',
+                  name: SeeMoreScreen.routeName,
+                  builder: (context, state) => SeeMoreScreen(),
                 ),
                 GoRoute(
                   parentNavigatorKey: _rootNavigatorKey,

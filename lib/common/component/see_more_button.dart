@@ -19,6 +19,7 @@ class SeeMoreButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         color: MyColor.white,
+        height: 24.0,
         child: Row(
           children: [
             Text(
