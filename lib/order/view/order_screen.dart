@@ -11,6 +11,7 @@ import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/common/view/completion_screen.dart';
+import 'package:jeju_shopping/order/component/custom_drop_down_button.dart';
 import 'package:jeju_shopping/order/model/order_model.dart';
 import 'package:jeju_shopping/order/provider/order_provider.dart';
 import 'package:jeju_shopping/product/component/vertical_item_card.dart';
@@ -209,8 +210,24 @@ class _ProductInfo extends StatelessWidget {
   }
 }
 
-class _TossWidget extends StatelessWidget {
+class _TossWidget extends StatefulWidget {
   const _TossWidget({super.key});
+
+  @override
+  State<_TossWidget> createState() => _TossWidgetState();
+}
+
+class _TossWidgetState extends State<_TossWidget> {
+  List<String> cards = [
+    '카드사 선택',
+    '국민카드',
+    '현대카드',
+    '삼성카드',
+    '롯데카드',
+    '비씨카드',
+    '하나카드',
+  ];
+  String card = '카드사 선택';
 
   @override
   Widget build(BuildContext context) {
@@ -339,35 +356,16 @@ class _TossWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16.0),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            border: Border.all(
-              color: MyColor.middleGrey,
-              width: 2.0,
-            ),
-            color: MyColor.lightGrey,
-          ),
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '카드사 선택',
-                  style: MyTextStyle.bodyMedium.copyWith(
-                    color: MyColor.darkGrey,
-                  ),
-                ),
-                PhosphorIcon(
-                  PhosphorIcons.caretDown(PhosphorIconsStyle.bold),
-                  size: 24.0,
-                  color: MyColor.darkGrey,
-                ),
-              ],
-            ),
-          ),
+        CustomDropDownButton(
+          dropdownList: cards,
+          defaultValue: card,
+          onChanged: (String? value) {
+            if (value != null) {
+              card = value;
+              setState(() {});
+            }
+          },
+          menuMaxHeight: 400.0,
         ),
         const SizedBox(height: 32.0),
         Row(
