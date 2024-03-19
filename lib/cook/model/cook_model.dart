@@ -32,48 +32,48 @@ class IngredientModel {
 
 class CookModel {
   final String id;
+  final String mainImageUrl;
   final String name;
   final String description;
   final List<IngredientModel> ingredient;
+  final String ingredientImageUrl;
   final List<RecipeModel> recipe;
-  final CookState cookState;
-  final String mainImageUrl;
-  final List<String> detailImageUrls;
   final List<ProductModel> preferProducts;
+  final CookState cookState;
 
   CookModel({
     required this.id,
+    required this.mainImageUrl,
     required this.name,
     required this.description,
     required this.ingredient,
+    required this.ingredientImageUrl,
     required this.recipe,
-    required this.cookState,
-    required this.mainImageUrl,
-    required this.detailImageUrls,
     required this.preferProducts,
+    required this.cookState,
   });
 
   CookModel copyWith({
     String? id,
+    String? mainImageUrl,
     String? name,
     String? description,
     List<IngredientModel>? ingredient,
+    String? ingredientImageUrl,
     List<RecipeModel>? recipe,
-    CookState? cookState,
-    String? mainImageUrl,
-    List<String>? detailImageUrls,
     List<ProductModel>? preferProducts,
+    CookState? cookState,
   }) {
     return CookModel(
       id: id ?? this.id,
+      mainImageUrl: mainImageUrl ?? this.mainImageUrl,
       name: name ?? this.name,
       description: description ?? this.description,
       ingredient: ingredient ?? this.ingredient,
+      ingredientImageUrl: ingredientImageUrl ?? this.ingredientImageUrl,
       recipe: recipe ?? this.recipe,
-      cookState: cookState ?? this.cookState,
-      mainImageUrl: mainImageUrl ?? this.mainImageUrl,
-      detailImageUrls: detailImageUrls ?? this.detailImageUrls,
       preferProducts: preferProducts ?? this.preferProducts,
+      cookState: cookState ?? this.cookState,
     );
   }
 }

@@ -147,7 +147,7 @@ class _CookDetailScreenState extends ConsumerState<CookDetailScreen> {
           const SizedBox(height: 8.0),
           Text(
             description,
-            style: MyTextStyle.descriptionRegular,
+            style: MyTextStyle.bodyRegular,
           ),
         ],
       ),
@@ -169,17 +169,17 @@ class _CookDetailScreenState extends ConsumerState<CookDetailScreen> {
           const SizedBox(height: 8.0),
           ...ingredient.map(
             (e) => Padding(
-              padding: const EdgeInsets.only(bottom: 4.0),
+              padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     e.title,
-                    style: MyTextStyle.minimumRegular,
+                    style: MyTextStyle.bodyRegular,
                   ),
                   Text(
                     e.description,
-                    style: MyTextStyle.minimumRegular,
+                    style: MyTextStyle.bodyRegular,
                   ),
                 ],
               ),
@@ -209,6 +209,7 @@ class _CookDetailScreenState extends ConsumerState<CookDetailScreen> {
               child: IntrinsicHeight(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
                       e.imageUrl,

@@ -29,40 +29,38 @@ class CookScreen extends ConsumerWidget {
 
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '웰빙쿡'),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 40.0),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Text(
-                  '라이프 스타일에 맞춰\n요리 레시피를 추천합니다.',
-                  style: MyTextStyle.headTitle,
-                ),
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(
+                '라이프 스타일에 맞춰\n요리 레시피를 추천합니다.',
+                style: MyTextStyle.headTitle,
               ),
             ),
-            const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
-            renderCooks(
-              kind: CookState.breakfast.label,
-              title: '가벼운 음식',
-              cooks: breakfasts,
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
-            renderCooks(
-              kind: CookState.lunch.label,
-              title: '일반식',
-              cooks: lunches,
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
-            renderCooks(
-              kind: CookState.dinner.label,
-              title: '위에 부담이 적은 음식',
-              cooks: dinners,
-            ),
-          ],
-        ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          renderCooks(
+            kind: CookState.breakfast.label,
+            title: '가벼운 음식',
+            cooks: breakfasts,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          renderCooks(
+            kind: CookState.lunch.label,
+            title: '일반식',
+            cooks: lunches,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
+          renderCooks(
+            kind: CookState.dinner.label,
+            title: '위에 부담이 적은 음식',
+            cooks: dinners,
+          ),
+        ],
       ),
     );
   }
