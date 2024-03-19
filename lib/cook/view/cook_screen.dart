@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/see_more_button.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
@@ -8,6 +9,7 @@ import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/cook/component/horizontal_item_list_cook.dart';
 import 'package:jeju_shopping/cook/model/cook_model.dart';
 import 'package:jeju_shopping/cook/provider/cook_provider.dart';
+import 'package:jeju_shopping/cook/view/see_more_cook_screen.dart';
 
 class CookScreen extends ConsumerWidget {
   static String get routeName => 'cook';
@@ -44,18 +46,21 @@ class CookScreen extends ConsumerWidget {
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
           renderCooks(
+            context: context,
             kind: CookState.breakfast.label,
             title: '가벼운 음식',
             cooks: breakfasts,
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
           renderCooks(
+            context: context,
             kind: CookState.lunch.label,
             title: '일반식',
             cooks: lunches,
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
           renderCooks(
+            context: context,
             kind: CookState.dinner.label,
             title: '위에 부담이 적은 음식',
             cooks: dinners,
@@ -66,6 +71,7 @@ class CookScreen extends ConsumerWidget {
   }
 
   SliverToBoxAdapter renderCooks({
+    required BuildContext context,
     required String kind,
     required String title,
     required List<CookModel> cooks,
@@ -96,7 +102,14 @@ class CookScreen extends ConsumerWidget {
                 ),
                 SeeMoreButton(
                   title: '더보기',
-                  onTap: () {},
+                  onTap: () {
+                    context.goNamed(
+                      SeeMoreCookScreen.routeName,
+                      pathParameters: {
+                        'title': kind,
+                      },
+                    );
+                  },
                 ),
               ],
             ),

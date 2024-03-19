@@ -24,13 +24,14 @@ class SeeMoreButton extends StatelessWidget {
           children: [
             Text(
               title,
-              style: MyTextStyle.minimumRegular.copyWith(
+              style: MyTextStyle.descriptionRegular.copyWith(
                 color: MyColor.darkGrey,
               ),
             ),
             PhosphorIcon(
-              PhosphorIcons.caretRight(),
+              PhosphorIcons.caretRight(PhosphorIconsStyle.bold),
               size: 16.0,
+              color: MyColor.darkGrey,
             ),
           ],
         ),
