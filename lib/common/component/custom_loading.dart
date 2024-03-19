@@ -11,8 +11,8 @@ class CustomLoadingScreen extends StatelessWidget {
       body: Center(
         child: Center(
           child: Image.asset('asset/img/logo/logo.png',
-            width: 100.0,
-            height: 100.0,
+            width: 160.0,
+            height: 160.0,
           ),
         ),
       ),
