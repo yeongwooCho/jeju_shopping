@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jeju_shopping/cart/model/cart_model.dart';
+import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
-import 'package:uuid/uuid.dart';
 
 final cartProvider =
     StateNotifierProvider<CartStateNotifier, List<CartModel>>((ref) {
@@ -15,16 +15,29 @@ class CartStateNotifier extends StateNotifier<List<CartModel>> {
     required ProductModel product,
     required int amount,
   }) {
-    final uuid = Uuid();
-    final id = uuid.v4();
-
     state = [
       ...state,
       CartModel(
-        id: id,
+        id: DataUtils.getUuid(),
         productModel: product,
         amount: amount,
         isSelected: true,
+      ),
+    ];
+  }
+
+  void addAllProduct({
+    required List<ProductModel> products,
+  }) {
+    state = [
+      ...state,
+      ...products.map(
+        (e) => CartModel(
+          id: DataUtils.getUuid(),
+          productModel: e,
+          amount: 1,
+          isSelected: true,
+        ),
       ),
     ];
   }
