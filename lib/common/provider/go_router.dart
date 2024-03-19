@@ -5,12 +5,13 @@ import 'package:jeju_shopping/common/view/completion_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/common/view/splash_screen.dart';
+import 'package:jeju_shopping/cook/view/cook_detail_screen.dart';
 import 'package:jeju_shopping/cook/view/cook_screen.dart';
 import 'package:jeju_shopping/delivery/view/delivery_screen.dart';
 import 'package:jeju_shopping/life_style/view/eating_habit_screen.dart';
 import 'package:jeju_shopping/life_style/view/life_style_habit_screen.dart';
-import 'package:jeju_shopping/product/view/category_detail_screen.dart';
 import 'package:jeju_shopping/order/view/order_screen.dart';
+import 'package:jeju_shopping/product/view/category_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_detail_screen.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/product/view/search_detail_screen.dart';
@@ -126,6 +127,14 @@ List<RouteBase> get routes => [
             path: '/cook',
             name: CookScreen.routeName,
             builder: (context, state) => CookScreen(),
+            routes: [
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: ':id',
+                name: CookDetailScreen.routeName,
+                builder: (context, state) => CookDetailScreen(),
+              ),
+            ],
           ),
           GoRoute(
             path: '/profile',

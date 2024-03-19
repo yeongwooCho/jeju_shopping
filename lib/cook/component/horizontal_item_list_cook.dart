@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/cook/model/cook_model.dart';
-import 'package:jeju_shopping/product/view/product_detail_screen.dart';
+import 'package:jeju_shopping/cook/view/cook_detail_screen.dart';
 
 class HorizontalItemListCook extends StatelessWidget {
   final List<CookModel> cooks;
@@ -30,7 +30,7 @@ class HorizontalItemListCook extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               context.goNamed(
-                ProductDetailScreen.routeName,
+                CookDetailScreen.routeName,
                 pathParameters: {'id': cook.id},
               );
             },
