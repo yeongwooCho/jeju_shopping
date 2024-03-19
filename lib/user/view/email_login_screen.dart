@@ -6,7 +6,6 @@ import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
-import 'package:jeju_shopping/common/view/root_tab.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 import 'package:jeju_shopping/user/view/term_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -22,10 +21,12 @@ class EmailLoginScreen extends StatefulWidget {
 
 class _EmailLoginScreenState extends State<EmailLoginScreen> {
   bool isAutoLogin = true;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
+      isLoading: isLoading,
       appbar: const DefaultAppBar(title: '이메일 로그인'),
       child: SingleChildScrollView(
         child: Padding(
@@ -57,7 +58,14 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   ),
                   const SizedBox(height: 20.0),
                   PrimaryButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      await Future.delayed(const Duration(seconds: 1));
+                      setState(() {
+                        isLoading = false;
+                      });
                       context.goNamed(ProductScreen.routeName);
                     },
                     child: const Text('로그인'),

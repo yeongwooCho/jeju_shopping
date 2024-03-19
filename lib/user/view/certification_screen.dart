@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/custom_text_form_field.dart';
+import 'package:jeju_shopping/common/component/custom_toast.dart';
 import 'package:jeju_shopping/common/const/button_style.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_app_bar.dart';
@@ -61,6 +62,7 @@ class _CertificationScreenState extends State<CertificationScreen> {
                 const SizedBox(width: 8.0),
                 ElevatedButton(
                   onPressed: () {
+                    showCustomToast(context, msg: '인증번호가 전송 되었습니다.');
                     setState(() {
                       isPushCertification = true;
                     });

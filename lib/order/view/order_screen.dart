@@ -16,13 +16,20 @@ import 'package:jeju_shopping/order/provider/order_provider.dart';
 import 'package:jeju_shopping/product/component/vertical_item_card.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class OrderScreen extends ConsumerWidget {
+class OrderScreen extends ConsumerStatefulWidget {
   static String get routeName => 'order';
 
   const OrderScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<OrderScreen> createState() => _OrderScreenState();
+}
+
+class _OrderScreenState extends ConsumerState<OrderScreen> {
+  bool isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
     final orders = ref
         .watch(orderProvider)
         .where((e) => e.deliveryState == DeliveryState.no)
@@ -31,6 +38,7 @@ class OrderScreen extends ConsumerWidget {
         orders.fold(0, (pre, e) => pre + e.productModel.price * e.amount);
 
     return DefaultLayout(
+      isLoading: isLoading,
       appbar: const DefaultAppBar(title: '주문서 작성'),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -47,7 +55,15 @@ class OrderScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: PrimaryButton(
-                onPressed: () {
+                onPressed: () async {
+                  setState(() {
+                    isLoading = true;
+                  });
+                  await Future.delayed(const Duration(seconds: 1));
+                  setState(() {
+                    isLoading = false;
+                  });
+
                   context.goNamed(
                     CompletionScreen.routeName,
                     pathParameters: {'title': '결제가\n정상적으로\n완료되었습니다.'},

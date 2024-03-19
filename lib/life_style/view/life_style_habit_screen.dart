@@ -8,19 +8,35 @@ import 'package:jeju_shopping/life_style/component/check_container.dart';
 import 'package:jeju_shopping/life_style/model/enum/life_style_title.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 
-class LifeStyleHabitScreen extends StatelessWidget {
+class LifeStyleHabitScreen extends StatefulWidget {
   static String get routeName => 'life';
 
   const LifeStyleHabitScreen({super.key});
 
   @override
+  State<LifeStyleHabitScreen> createState() => _LifeStyleHabitScreenState();
+}
+
+class _LifeStyleHabitScreenState extends State<LifeStyleHabitScreen> {
+  bool isLoading = false;
+
+  @override
   Widget build(BuildContext context) {
     return DefaultLayout(
+      isLoading: isLoading,
       appbar: const DefaultAppBar(title: '라이프스타일 조사(2/2)'),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 40.0, right: 24.0, left: 24.0),
         child: PrimaryButton(
           onPressed: () async {
+            setState(() {
+              isLoading = true;
+            });
+            await Future.delayed(const Duration(seconds: 1));
+            setState(() {
+              isLoading = false;
+            });
+
             context.goNamed(ProductScreen.routeName);
           },
           child: const Text('다음'),
