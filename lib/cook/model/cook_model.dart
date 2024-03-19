@@ -20,11 +20,21 @@ class RecipeModel {
   });
 }
 
+class IngredientModel {
+  final String title;
+  final String description;
+
+  IngredientModel({
+    required this.title,
+    required this.description,
+  });
+}
+
 class CookModel {
   final String id;
   final String name;
   final String description;
-  final Map<String, String> ingredient;
+  final List<IngredientModel> ingredient;
   final List<RecipeModel> recipe;
   final CookState cookState;
   final String mainImageUrl;
@@ -47,7 +57,7 @@ class CookModel {
     String? id,
     String? name,
     String? description,
-    Map<String, String>? ingredient,
+    List<IngredientModel>? ingredient,
     List<RecipeModel>? recipe,
     CookState? cookState,
     String? mainImageUrl,
