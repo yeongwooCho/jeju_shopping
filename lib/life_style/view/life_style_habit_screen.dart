@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/common/component/default_button.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
@@ -6,39 +7,47 @@ import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/life_style/component/check_container.dart';
 import 'package:jeju_shopping/life_style/model/enum/life_style_title.dart';
+import 'package:jeju_shopping/life_style/provider/life_style_provider.dart';
 import 'package:jeju_shopping/product/view/product_screen.dart';
 
-class LifeStyleHabitScreen extends StatefulWidget {
+class LifeStyleHabitScreen extends ConsumerStatefulWidget {
   static String get routeName => 'life';
 
   const LifeStyleHabitScreen({super.key});
 
   @override
-  State<LifeStyleHabitScreen> createState() => _LifeStyleHabitScreenState();
+  ConsumerState<LifeStyleHabitScreen> createState() =>
+      _LifeStyleHabitScreenState();
 }
 
-class _LifeStyleHabitScreenState extends State<LifeStyleHabitScreen> {
+class _LifeStyleHabitScreenState extends ConsumerState<LifeStyleHabitScreen> {
   bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    final lifeStyle = ref.watch(lifeStyleProvider);
+
     return DefaultLayout(
       isLoading: isLoading,
       appbar: const DefaultAppBar(title: '라이프스타일 조사(2/2)'),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 40.0, right: 24.0, left: 24.0),
         child: PrimaryButton(
-          onPressed: () async {
-            setState(() {
-              isLoading = true;
-            });
-            await Future.delayed(const Duration(seconds: 1));
-            setState(() {
-              isLoading = false;
-            });
+          onPressed: lifeStyle.place.isNotEmpty &&
+                  lifeStyle.exercise.isNotEmpty &&
+                  lifeStyle.sleep.isNotEmpty
+              ? () async {
+                  setState(() {
+                    isLoading = true;
+                  });
+                  await Future.delayed(const Duration(seconds: 1));
+                  setState(() {
+                    isLoading = false;
+                  });
 
-            context.goNamed(ProductScreen.routeName);
-          },
+                  context.goNamed(ProductScreen.routeName);
+          }
+              : null,
           child: const Text('다음'),
         ),
       ),
