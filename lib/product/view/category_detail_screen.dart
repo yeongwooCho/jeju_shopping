@@ -5,6 +5,7 @@ import 'package:jeju_shopping/common/layout/default_app_bar.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
 import 'package:jeju_shopping/common/utils/data_utils.dart';
 import 'package:jeju_shopping/product/component/vertical_item_grid.dart';
+import 'package:jeju_shopping/product/model/product_model.dart';
 import 'package:jeju_shopping/product/provider/product_provider.dart';
 
 class CategoryDetailScreen extends ConsumerWidget {
@@ -19,7 +20,7 @@ class CategoryDetailScreen extends ConsumerWidget {
 
     final products = ref
         .watch(productProvider)
-        .where((e) => e.category.label == category)
+        .where((e) => e.category.contains(category))
         .toList();
 
     return DefaultLayout(

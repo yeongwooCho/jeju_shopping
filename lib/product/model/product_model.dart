@@ -27,7 +27,7 @@ class ProductModel {
   final int price;
   final int deliveryPrice;
   final bool isLike;
-  final Category category;
+  final List<String> category;
   final ProductPreferState preferState;
   final String mainImageUrl;
   final List<String> detailImageUrls;
@@ -51,7 +51,7 @@ class ProductModel {
     int? deliveryPrice,
     String? imageUrl,
     bool? isLike,
-    Category? category,
+    List<String>? category,
     ProductPreferState? preferState,
     String? mainImageUrl,
     List<String>? detailImageUrls,
