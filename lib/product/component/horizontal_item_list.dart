@@ -54,7 +54,7 @@ class HorizontalItemList extends StatelessWidget {
                   ),
                   const SizedBox(height: 4.0),
                   Text(
-                    DataUtils.convertPriceToMoneyString(price: product.price),
+                    '${DataUtils.convertPriceToMoneyString(price: product.price)} 원',
                     style: MyTextStyle.bodyBold,
                   ),
                 ],

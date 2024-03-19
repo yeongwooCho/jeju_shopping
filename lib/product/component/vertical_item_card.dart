@@ -62,7 +62,7 @@ class VerticalItemListCard extends ConsumerWidget {
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  '${DataUtils.convertPriceToMoneyString(price: product.price * amount)}원',
+                  '${DataUtils.convertPriceToMoneyString(price: product.price * amount)} 원',
                   style: MyTextStyle.bodyBold,
                 ),
               ],

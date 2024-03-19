@@ -46,7 +46,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
 
     final fullWidth = MediaQuery.of(context).size.width;
     final safeTopPadding = MediaQuery.of(context).padding.top;
-    final safeBottomPadding = MediaQuery.of(context).padding.bottom;
 
     return DefaultLayout(
       appbar: Hidable(
@@ -134,7 +133,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               product.mainImageUrl,
               width: fullWidth,
               height: fullWidth,
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
             renderProductInfo(product: product),
             const DividerContainer(),
@@ -155,8 +154,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               itemBuilder: (context, index) {
                 return Image.asset(
                   product.detailImageUrls[index],
-                  width: fullWidth,
-                  height: fullWidth,
                   fit: BoxFit.cover,
                 );
               },
@@ -184,7 +181,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${DataUtils.convertPriceToMoneyString(price: product.price)}원',
+                '${DataUtils.convertPriceToMoneyString(price: product.price)} 원',
                 style: MyTextStyle.bigTitleBold,
               ),
               IconButton(
@@ -217,7 +214,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               ),
               const SizedBox(width: 8.0),
               Text(
-                '${DataUtils.convertPriceToMoneyString(price: product.deliveryPrice)}원 (3개마다 기본 배송비 반복 부과)',
+                '${DataUtils.convertPriceToMoneyString(price: product.deliveryPrice)} 원 (3개마다 기본 배송비 반복 부과)',
                 style: MyTextStyle.minimumRegular,
               )
             ],

@@ -142,7 +142,7 @@ class OrderScreen extends ConsumerWidget {
                 style: MyTextStyle.bodyBold,
               ),
               Text(
-                '${DataUtils.convertPriceToMoneyString(price: totalPrice)}원',
+                '${DataUtils.convertPriceToMoneyString(price: totalPrice)} 원',
                 style: MyTextStyle.bodyBold,
               ),
             ],
