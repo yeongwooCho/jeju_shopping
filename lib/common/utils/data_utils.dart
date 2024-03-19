@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:jeju_shopping/product/model/product_model.dart';
+import 'package:uuid/uuid.dart';
 
 class DataUtils {
   static String convertDateTimeToDateString({
@@ -35,5 +36,10 @@ class DataUtils {
       default:
         return '';
     }
+  }
+
+  static String getUuid() {
+    final uuid = Uuid();
+    return uuid.v4();
   }
 }
