@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jeju_shopping/common/component/custom_loading.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 
 class DefaultLayout extends StatelessWidget {
@@ -44,7 +45,7 @@ class DefaultLayout extends StatelessWidget {
             child: Container(
               color: MyColor.barrier,
               child: const Center(
-                child: CircularProgressIndicator(),
+                child: CustomLoadingScreen(),
               ),
             ),
           ),
