@@ -116,7 +116,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                         .read(orderProvider.notifier)
                         .addProductRightNow(productModel: product, amount: 1);
                   },
-                  child: const Text('바로 결제하기'),
+                  child: const Text('바로 구매하기'),
                 ),
               ),
             ],
