@@ -73,6 +73,7 @@ class _InputInfoScreenState extends ConsumerState<InputInfoScreen> {
                 validator: (String? value) {
                   return null;
                 },
+                textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 8.0),
               CustomTextFormField(
@@ -83,6 +84,7 @@ class _InputInfoScreenState extends ConsumerState<InputInfoScreen> {
                 validator: (String? value) {
                   return null;
                 },
+                textInputType: TextInputType.text,
               ),
               const SizedBox(height: 8.0),
               CustomTextFormField(
@@ -93,6 +95,7 @@ class _InputInfoScreenState extends ConsumerState<InputInfoScreen> {
                 validator: (String? value) {
                   return null;
                 },
+                textInputType: TextInputType.text,
               ),
               const SizedBox(height: 8.0),
               ContainerButton(

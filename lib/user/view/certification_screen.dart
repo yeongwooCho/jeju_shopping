@@ -57,6 +57,7 @@ class _CertificationScreenState extends State<CertificationScreen> {
                     validator: (String? value) {
                       return null;
                     },
+                    textInputType: TextInputType.number,
                   ),
                 ),
                 const SizedBox(width: 8.0),
@@ -87,6 +88,7 @@ class _CertificationScreenState extends State<CertificationScreen> {
                       validator: (String? value) {
                         return null;
                       },
+                      textInputType: TextInputType.text,
                     ),
                   ),
                   const SizedBox(width: 8.0),
