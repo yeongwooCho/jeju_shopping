@@ -31,6 +31,7 @@ class ProductModel {
   final ProductPreferState preferState;
   final String mainImageUrl;
   final List<String> detailImageUrls;
+  final bool isIngredient;
 
   ProductModel({
     required this.id,
@@ -42,6 +43,7 @@ class ProductModel {
     required this.preferState,
     required this.mainImageUrl,
     required this.detailImageUrls,
+    this.isIngredient = false,
   });
 
   ProductModel copyWith({
@@ -55,6 +57,7 @@ class ProductModel {
     ProductPreferState? preferState,
     String? mainImageUrl,
     List<String>? detailImageUrls,
+    bool? isIngredient,
   }) {
     return ProductModel(
       id: id ?? this.id,
@@ -66,6 +69,7 @@ class ProductModel {
       category: category ?? this.category,
       mainImageUrl: mainImageUrl ?? this.mainImageUrl,
       detailImageUrls: detailImageUrls ?? this.detailImageUrls,
+      isIngredient: isIngredient ?? this.isIngredient,
     );
   }
 }

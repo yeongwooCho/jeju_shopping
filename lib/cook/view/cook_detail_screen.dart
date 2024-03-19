@@ -106,7 +106,7 @@ class _CookDetailScreenState extends ConsumerState<CookDetailScreen> {
                 right: 24.0,
               ),
               child: const Text(
-                '레시피에 포함된 상품',
+                '레시피 관련 추천 상품',
                 style: MyTextStyle.bigTitleBold,
               ),
             ),

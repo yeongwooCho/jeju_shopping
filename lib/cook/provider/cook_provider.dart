@@ -7,8 +7,9 @@ import 'package:jeju_shopping/product/provider/product_provider.dart';
 final cookProvider =
     StateNotifierProvider<CookStateNotifier, List<CookModel>>((ref) {
   final products = ref.watch(productProvider);
+  final preferProducts = products.where((e) => e.isIngredient).toList();
 
-  return CookStateNotifier(products: products);
+  return CookStateNotifier(products: preferProducts);
 });
 
 class CookStateNotifier extends StateNotifier<List<CookModel>> {
