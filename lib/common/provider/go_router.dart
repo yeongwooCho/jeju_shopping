@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jeju_shopping/cart/view/cart_screen.dart';
+import 'package:jeju_shopping/common/view/custom_sns_screen.dart';
 import 'package:jeju_shopping/common/view/completion_screen.dart';
 import 'package:jeju_shopping/common/view/error_screen.dart';
 import 'package:jeju_shopping/common/view/root_tab.dart';
@@ -48,6 +49,11 @@ List<RouteBase> get routes => [
         path: '/completion/:title',
         name: CompletionScreen.routeName,
         builder: (context, state) => CompletionScreen(),
+      ),
+      GoRoute(
+        path: '/sns/:title',
+        name: CustomSnsScreen.routeName,
+        builder: (context, state) => CustomSnsScreen(),
       ),
       GoRoute(
         path: '/login',

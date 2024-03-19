@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jeju_shopping/common/view/custom_sns_screen.dart';
 import 'package:jeju_shopping/common/const/colors.dart';
 import 'package:jeju_shopping/common/const/text_styles.dart';
 import 'package:jeju_shopping/common/layout/default_layout.dart';
@@ -27,7 +28,12 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.goNamed(
+                      CustomSnsScreen.routeName,
+                      pathParameters: {'title': 'kakao'},
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: MyColor.text,
                     backgroundColor: const Color(0xFFFAE64D),
@@ -64,17 +70,32 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.goNamed(
+                          CustomSnsScreen.routeName,
+                          pathParameters: {'title': 'naver'},
+                        );
+                      },
                       icon: Image.asset('asset/img/social_button/naver.png'),
                       iconSize: 72.0,
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.goNamed(
+                          CustomSnsScreen.routeName,
+                          pathParameters: {'title': 'google'},
+                        );
+                      },
                       icon: Image.asset('asset/img/social_button/google.png'),
                       iconSize: 72.0,
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.goNamed(
+                          CustomSnsScreen.routeName,
+                          pathParameters: {'title': 'apple'},
+                        );
+                      },
                       icon: Image.asset('asset/img/social_button/apple.png'),
                       iconSize: 72.0,
                     ),
