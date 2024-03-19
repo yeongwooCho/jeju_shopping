@@ -90,7 +90,42 @@ flutter:
     - asset/img/product/
     - asset/img/pay/
     - asset/img/user/
-    - asset/img/cook/
+    - asset/img/cook/0/
+    - asset/img/cook/1/
+    - asset/img/cook/2/
+    - asset/img/cook/3/
+    - asset/img/cook/4/
+    - asset/img/cook/5/
+    - asset/img/cook/6/
+    - asset/img/cook/7/
+    - asset/img/cook/8/
+    - asset/img/cook/9/
+    - asset/img/cook/10/
+    - asset/img/cook/11/
+    - asset/img/cook/12/
+    - asset/img/cook/13/
+    - asset/img/cook/14/
+    - asset/img/cook/15/
+    - asset/img/cook/16/
+    - asset/img/cook/17/
+    - asset/img/cook/0/recipe/
+    - asset/img/cook/1/recipe/
+    - asset/img/cook/2/recipe/
+    - asset/img/cook/3/recipe/
+    - asset/img/cook/4/recipe/
+    - asset/img/cook/5/recipe/
+    - asset/img/cook/6/recipe/
+    - asset/img/cook/7/recipe/
+    - asset/img/cook/8/recipe/
+    - asset/img/cook/9/recipe/
+    - asset/img/cook/10/recipe/
+    - asset/img/cook/11/recipe/
+    - asset/img/cook/12/recipe/
+    - asset/img/cook/13/recipe/
+    - asset/img/cook/14/recipe/
+    - asset/img/cook/15/recipe/
+    - asset/img/cook/16/recipe/
+    - asset/img/cook/17/recipe/
 
   # An image assets can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
