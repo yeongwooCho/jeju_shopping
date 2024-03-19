@@ -15,7 +15,7 @@ class HorizontalItemListCook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 214.0,
+      height: 190.0,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
