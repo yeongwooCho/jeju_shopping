@@ -41,9 +41,9 @@ class VerticalItemList extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            context.goNamed(
+            context.pushNamed(
               ProductDetailScreen.routeName,
-              pathParameters: {'id': index.toString()},
+              pathParameters: {'id': product.id},
             );
           },
           child: SizedBox(
